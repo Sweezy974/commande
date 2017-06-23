@@ -1,0 +1,24 @@
+{
+    "name": "fredB/ atelier",
+    "description": "site atelier",
+    "type": "project",
+
+    "autoload": {
+      "psr-4": {
+        "App\\": "app/",
+        "Models\\": "models/",
+        "Views\\": "views/",
+        "Controllers\\": "controllers/",
+        "Test\\": "test/"
+      }
+  },
+  "scripts": {
+      "run": [
+          "echo 'Started web server on http://localhost:1111'",
+          "php -S localhost:1111"
+      ]
+  },
+    "require": {
+        "twig/twig": "^2.4"
+    }
+}

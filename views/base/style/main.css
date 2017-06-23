@@ -1,0 +1,77 @@
+body{
+  background: url(../media/img/blur2.jpg);
+  background-size: initial;
+  background-repeat: no-repeat;
+  font-family: "PT Sans";
+  background-attachment: fixed;
+}
+nav{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.side-nav .userView {
+    margin-bottom: 0px;
+    background-color: darkturquoise;
+}
+.side-nav .collapsible-header, .side-nav.fixed .collapsible-header {
+  font-weight: bolder;
+}
+
+.side-nav img{
+  text-align: -webkit-center;
+}
+
+.dash{
+  background-color: white;
+  padding: 60px;
+  min-height: 1000px!important;
+  min-width: 650px!important;
+
+}
+
+.side-nav{
+  box-shadow: 3px 1px 1px 1px rgba(0, 0, 0, 0.21);
+}
+
+{
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.left {
+  margin-left: 160px!important;
+}
+/* Mobile Devices - Smartphone - portrait */
+@media only screen and (max-width : 1150px) {
+  .side-nav.fixed {
+        transform: translateX(-100%);
+}
+.left {
+  margin-left: 120px!important;
+}
+}

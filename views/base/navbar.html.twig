@@ -1,0 +1,188 @@
+<style media="screen">
+nav ul a:hover {
+  background-color: rgba(0,0,0,0);
+}
+</style>
+<div class="navbar-fixed">
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="slide-out" class="button-collapse" style="padding-right:20px;"><i class="material-icons">menu</i></a>
+
+        <ul class="left hide-on-med-and-down" id="date_heure">
+          <script type="text/javascript">
+          function date_heure(id)
+          {
+            date = new Date;
+            annee = date.getFullYear();
+            moi = date.getMonth();
+            mois = new Array('Janvier','F&eacute;vrier','Mars','Avril','Mai','Juin','Juillet','Ao&ucirc;t','Septembre','Octobre','Novembre','D&eacute;cembre');
+            j = date.getDate();
+            jour = date.getDay();
+            jours = new Array('Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
+            h = date.getHours();
+            if(h<10)
+            {
+              h = "0"+h;
+            }
+            m = date.getMinutes();
+            if(m<10)
+            {
+              m = "0"+m;
+            }
+            // s = date.getSeconds();
+            // if(s<10)
+            // {
+            //   s = "0"+s;
+            // }
+            resultat = jours[jour]+' '+j+' '+mois[moi]+' '+annee+' '+h+':'+m;
+            document.getElementById(id).innerHTML = resultat;
+            setTimeout('date_heure("'+id+'");','1000');
+            return true;
+          }
+          </script>
+          <script type="text/javascript">window.onload = date_heure('date_heure');</script>
+        </ul>
+        <!-- <ul id="nav-mobile" class="right ">
+          <li><a href="page.php?id=8"><span class="new red badge"><?php countMessage() ?></span></a></li>
+        </ul> -->
+        <!-- <a href="#!" class="brand-logo center uppercase">uFLOW</a> -->
+        <!-- <ul class="right hide-on-med-and-down">
+          <li><a href="home.php">Accueil</a></li>
+          <li class="active">
+            <a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="fa fa-user"></i> Mon Compte <i class="fa fa-angle-down"></i></a>
+            <ul   style="margin-top: 64px;" id="dropdown1" class="dropdown-content" >
+            <li><a href="#!">Gérer mon compte</a></li>
+            <li><a href="#!">Mes statistiques</a></li>
+            <!-- <li><a href="#!">Déclarer un bug</a></li> -->
+
+            <!-- <li class="divider"></li>
+            <li><a href="./?action=logout"><i class="fa fa-sign-out"></i>Déconnexion</a></li>
+          </ul>
+        </li>
+          <?php /* echo $AdmBtnHTML; */?>
+        </ul> -->
+
+        <!-- navbar for small devices -->
+        <ul class="right ">
+          <!-- <li><a href="home.php">Accueil</a></li> -->
+          <li class="">
+            <a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="fa fa-user"></i> Mon Compte <i class="fa fa-angle-down"></i></a>
+            <ul   style="margin-top: 64px;" id="dropdown1" class="dropdown-content" >
+            <li><a href="#!">Gérer mon compte</a></li>
+            <li><a href="#!">Mes statistiques</a></li>
+            <!-- <li><a href="#!">Déclarer un bug</a></li> -->
+
+            <li class="divider"></li>
+            <li><a href="./?action=logout"><i class="fa fa-sign-out"></i>Déconnexion</a></li>
+          </ul>
+        </li>
+          <?php echo $AdmBtnHTML; ?>
+        </ul>
+
+
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="col s12 m4 l3">
+   <ul id="slide-out" class="side-nav fixed" style="transform: translateX(0%);">
+     <li class="">
+       <div class="userView">
+         <!-- <img class="background" src="img/blur2.jpg"> -->
+
+         <!-- user image -->
+         <a href="#!user">
+           <img class="circle" src="views/base/media/img/guitare.jpg">
+         </a>
+         <a href="#!name"><span class="white-text name">Frédéric BOYER</span></a>
+         <!-- <a href="/?action=logout"><span class="white-text email"><i class="fa fa-sign-out"></i>Déconnexion</span></a> -->
+         <a href="#!email"><span class="white-text email"><?php echo $_SESSION['mail'] ?></span></a>
+         <!-- <a href="/?action=logout"><span class="white-text email"><i class="fa fa-sign-out"></i>Déconnexion</span></a> -->
+
+       </div>
+       <!-- <div class="userView">
+         <a href="/?action=logout"><span class="white-text email"><i class="fa fa-sign-out"></i>Déconnexion</span></a>
+         <a href="#!"><span class="white-text email">Gérer mon compte</span></a>
+         <a href="#!"><span class="white-text email">Mes statistiques</span></a>
+         <!-- <a href="#!email"><span class="white-text email">Gestion de compte</span></a>
+       </div> -->
+   </li>
+   <!-- <li class="">
+     <ul class="collapsible collapsible-accordion">
+       <li class="red lighten-2">
+         <a href="/?action=logout"><i class="fa fa-sign-out"></i>Déconnexion</a>
+       </li>
+     </ul>
+   </li> -->
+   <li class="" style="background-color:darkturquoise;">
+     <ul class="collapsible collapsible-accordion">
+       <li class="">
+         <a href="#" class="collapsible-header"><i class="fa fa-user "></i>Mon compte<i class="fa fa-angle-down right"></i></a>
+         <div class="collapsible-body" style="display: block; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+           <ul>
+             <li><a href="#!"><i class="fa fa-user-md"></i>Gérer mon compte</a></li>
+             <li><a href="#!"><i class="fa fa-bar-chart"></i>Mes statistiques</a></li>
+             <li class="divider"></li>
+             <li class=""><a href="/?action=logout"><i class="fa fa-sign-out"></i>Déconnexion</a></li>
+           </ul>
+         </div>
+       </li>
+     </ul>
+   </li>
+
+   <li class="">
+     <ul class="collapsible collapsible-accordion">
+       <li class="grey lighten-2">
+         <a href="/home.php" class="collapsible-header "><i class="fa fa-home "></i>Accueil</a>
+       </li>
+     </ul>
+   </li>
+     <li class="">
+       <ul class="collapsible collapsible-accordion">
+         <!-- <li class="">
+           <a href="http://oldsav.telecoute.re/planning.php" class="collapsible-header "><i class="fa fa-calendar "></i>Planning</a>
+           <!-- <div class="collapsible-body" style="display: block; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+             <ul>
+               <li><a href="#!">First</a></li>
+               <li><a href="#!">Second</a></li>
+               <li><a href="#!">Third</a></li>
+               <li><a href="#!">Fourth</a></li>
+             </ul>
+           </div>
+         </li>
+       </ul>
+     </li> -->
+     <li class="">
+       <ul class="collapsible collapsible-accordion">
+         <li class="">
+           <a href="page.php?id=8"  class="collapsible-header"><i class="fa fa-comments "></i>Messagerie <span class="badge"><?php countMessage() ?></span></a>
+         </li>
+         <li>
+           <a href="?c=order" class="collapsible-header"><i class="fa fa-credit-card "></i>Commerciaux </a>
+         </li>
+         <li>
+           <a href="http://oldsav.telecoute.re/" class="collapsible-header"><i class="fa fa-gears "></i>Maintenance</a>
+         </li>
+         <li>
+           <a href="page.php?id=15" class="collapsible-header"><i class="fa fa-universal-access "></i>S.A.V</a>
+         </li>
+         <li>
+           <a href="./page.php?id=2" class="collapsible-header"><i class="fa fa-circle "></i>Intervention</a>
+         </li>
+         <li>
+           <a href="page.php?id=2" class="collapsible-header"><i class="fa fa-files-o "></i>Fiche Client</a>
+         </li>
+         <li>
+           <a href="page.php?id=9" class="collapsible-header"><i class="fa fa-check-square "></i>Outils d'audit</a>
+         </li>
+         <li>
+           <a href="page.php?id=1" class="collapsible-header"><i class="fa fa-book "></i>Manuels</a>
+         </li>
+
+       </ul>
+     </li>
+
+   </ul>
+ </div>

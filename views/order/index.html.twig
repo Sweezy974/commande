@@ -1,0 +1,39 @@
+{% include 'base/layout.html.twig'%}
+{% include 'base/navbar.html.twig'%}
+
+<!-- Container -->
+<div class="container dash col s12 m12 l7">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2 class="text-uppercase">Gestion des commandes</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col l12 m12 s12 ">
+      <table class="centered highlight ">
+        <thead>
+          <tr>
+            <!-- <th data-field="id">Createur</th> -->
+            <th data-field="id">Raison Sociale</th>
+            <th data-field="id">Code client</th>
+            <th data-field="id">N° du document</th>
+            <th data-field="id">Date création du document</th>
+            <th data-field="id">Montant Devis</th>
+            <th data-field="id">Traiter la commande</th>
+          </tr>
+        </thead>
+
+        <tbody id="results">
+          {% for order in orderList %}
+          <tr><td>{{ order.raison_sociale }}</td><td>{{ order.numero_devis }}</td><td>{{ order.numero_comptable }}€</td><td>{{ order.date_creation|date("d/m/Y") }}</td><td>{{ order.montant_devis }}€ </td><td><a class="btn wave-effect" href="?c=order&t=new">traiter</a></td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+{% include 'base/bottom.html.twig'%}
