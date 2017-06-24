@@ -58,8 +58,11 @@ class Order extends Connect
   public function fetchAll()
   {
     $connexion = $this->getConnexionEBP();
-    $sql = "select  CustomerName  , CustomerId  , DocumentState  , DocumentNumber  , DocumentType  , DeliveryAddress_ZipCode  , InvoicingAddress_ZipCode  , DeliveryContact_Phone  , DeliveryAddress_Address1  , InvoicingContact_Email  , DeliveryAddress_City  , InvoicingAddress_Address1  , InvoicingAddress_City  , DeliveryContact_CellPhone  , InvoicingContact_Phone  , InvoicingContact_CellPhone  , InvoicingContact_Name  , InvoicingContact_FirstName  , Id  , sysCreatedDate  , AmountVatExcluded  , DepositAmount  , sysCreatedUser  from SaleDocument
-    where DocumentType='8' and (DeliveryState ='0' or DeliveryState ='1') order by sysCreatedDate desc";
+    $sql = "SELECT  CustomerName  , CustomerId  , DocumentState  , DocumentNumber  , DocumentType  , DeliveryAddress_ZipCode  ,
+    InvoicingAddress_ZipCode  , DeliveryContact_Phone  , DeliveryAddress_Address1  , InvoicingContact_Email  , DeliveryAddress_City  ,
+    InvoicingAddress_Address1  , InvoicingAddress_City  , DeliveryContact_CellPhone  , InvoicingContact_Phone  , InvoicingContact_CellPhone  ,
+    InvoicingContact_Name  , InvoicingContact_FirstName  , Id  , sysCreatedDate  , AmountVatExcluded  , DepositAmount  , sysCreatedUser  from SaleDocument
+    WHERE DocumentType='8' AND (DeliveryState ='0' OR DeliveryState ='1') ORDER BY sysCreatedDate DESC";
     $stmt = $connexion->prepare($sql);
     echo $sql;
     $stmt->execute();

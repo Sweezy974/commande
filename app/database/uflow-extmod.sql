@@ -1,3 +1,42 @@
+CREATE DATABASE sqlserver;
+USE `sqlserver`;
+
+CREATE TABLE `sale_document` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `CustomerName` varchar(255) NOT NULL,
+  `CustomerId` varchar(11) NOT NULL,
+  `DocumentState` int(1) NOT NULL,
+  `DocumentType` int(1) NOT NULL,
+  `DocumentNumber` int(6) NOT NULL,
+  `sysCreatedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `DeliveryAddress_Address` text NOT NULL,
+  `DeliveryAddress_ZipCode` int(6) NOT NULL,
+  `DeliveryAddress_City` varchar(255) NOT NULL,
+  `InvoicingAddress_Address` text NOT NULL,
+  `InvoicingAddress_ZipCode` int(6) NOT NULL,
+  `InvoicingAddress_City` varchar(255) NOT NULL,
+  `InvoicingContact_Phone` varchar(255) NOT NULL,
+  `InvoicingContact_CellPhone` varchar(255) NOT NULL,
+  `InvoicingContact_Email` varchar(255) NOT NULL,
+  `InvoicingContact_Name` varchar(255) NOT NULL,
+  `InvoicingContact_FirstName` varchar(255) NOT NULL,
+  `AmountVatExcluded` varchar(255) NOT NULL,
+  `DepositAmount` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `devis_ebp`
+--
+
+INSERT INTO `sale_document` (`id`,`DocumentNumber`,`DocumentType`,`DocumentState`, `sysCreatedDate`,`CustomerId`, `CustomerName`, `InvoicingAddress_Address`, `InvoicingAddress_ZipCode`, `InvoicingAddress_City`, `DeliveryAddress_Address`, `DeliveryAddress_ZipCode`, `DeliveryAddress_City`, `InvoicingContact_Phone`, `InvoicingContact_CellPhone`, `InvoicingContact_Email`, `InvoicingContact_Name`, `InvoicingContact_FirstName`,`AmountVatExcluded`, `DepositAmount`) VALUES
+(124, 9730,8,1,'2017-06-24 08:35:13',5405,'CENTRE COMMERCIAL BEL AIR', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS',       '0262 31 91 80', '0692655653', 'belair-comm@gmail.com','MARTIN', 'MONIQUE','594.70 €', '189.60 €'),
+(125, 0480,8,1,'2017-06-24 08:35:00',4555,'LA VARANGUE',               '8 RUE DE L OASIS', 97434, 'SAINT GILLES', '8 ROCADE DE L\'OASIS', 97434, 'SAINT GILLES',     '0262 30 20 40', '0692 65 65 71', 'lagrandevarangue@live.fr','MOREAU', 'HERVÉ', '1,731.64 €', '560.00 €'),
+(126, 8408,6,0,'2017-06-24 08:30:14',6977,'MR CHONG',                  ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', '0262 41 28 65', '0692 68 68 36', 'drchong@wanadoo.fr', 'PHILIPPE', 'FRANCIS','1,354.13 €', '431.29 €'),
+(127, 8800,7,1,'2017-06-24 08:30:19',1827,'MME JEANNE BARTE ',         '29 CHEMIN BERNARD', 97410, 'LE TAMPON', '29 CHEMIN BERNARD', 97410, 'LE TAMPON',             '0262 57 04 06', '0692 85 14 59', 'jb974@laposte.net', 'BARTE', 'JEANNE','0.00 €', '0.00 €'),
+(128, 0054,8,1,'2017-06-24 08:30:25',2873,'MR GEORGE DELAUNAY',        '4 RUE MONGOLIA', 97470, 'SAINT BENOIT', '4 RUE MONGOLIA', 97470, 'SAINT BENOIT',             '0692 84 78 25', '0692 84 78 25', 'george@gmail.com', 'DELAUNAY', 'GEORGE', '597.68 €', '0.00 €');
+
+-- --------------------------------------------------------
+
 CREATE DATABASE uflow;
 USE `uflow`;
 -- phpMyAdmin SQL Dump
@@ -93,12 +132,12 @@ CREATE TABLE `modules_commandes` (
 -- Contenu de la table `modules_commandes`
 --
 
-INSERT INTO `modules_commandes` (`id`, `id_createur`, `date_creation`, `numero_devis`, `numero_comptable`, `raison_sociale`, `adresse_facturation`, `cp_facturation`, `ville_facturation`, `adresse_livraison`, `cp_livraison`, `ville_livraison`, `tel1`, `tel2`, `mail1`, `mail2`, `nom_responsable`, `prenom_responsable`, `materiel`, `telesurveillance`, `videosurveillance`, `commentaires`, `main_oeuvre`, `travaux_hauteur`, `cable_moulure`, `tranche_ext`, `cable_plafond`, `tube_iro`, `achat_location`, `engagement`, `montant_devis`, `acompte`) VALUES
-(124, 1, '2017-06-24 08:35:13', 'CC964', 'TS09205', 'CENTRE COMMERCIAL BEL AIR', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS', '0262 31 91 80', '0692655653', 'belair-comm@gmail.com', '', 'MARTIN', 'MONIQUE', '1 CARTOUCHE NAT 150 M3', 'oui', 'oui', '000', '03:00', 'oui', 'oui', 'oui', 'oui', 'oui', 'vente', 0, '594.70 €', '189.60 €'),
-(125, 5, '2017-06-24 08:35:00', 'CC907', 'CL06725', 'LA VARANGUE', '8 RUE DE L OASIS', 97434, 'SAINT GILLES', '8 ROCADE DE L\'OASIS', 97434, 'SAINT GILLES', '0262 30 20 40', '0692 65 65 71', 'lagrandevarangue@live.fr', '', 'MOREAU', 'HERVÉ', '1 CARTE CW32 - 1 CARTE EMETTEUR - RECEPTEUR RADIO -  1 CLAVIER RADIO  CW32 - 1 CARTE CHIMIQUE - 1 CARTOUCHE NAT 150 M3', 'oui', 'non', 'CONSERVER CENTRALE EXISTANTE ( SUMIT ) COMME ALIMENTATION\nPLACER CLAVIER CW32 DANS COFFRET EXTERIEUR.\nFOURNIR BATTERIE 13 VOLT 7AH POUR CENTRALE ET 1 BATTERIE 12 VOLT 2 AH POUR LA SIRENE EXTERIEURE  ARJOUTER SUR LE BON EN COMPLEMENT MATERIELS\n', '08:00', 'non', 'non', 'non', 'non', 'non', 'vente', 0, '1,731.64 €', '560.00 €'),
-(126, 88, '2017-06-24 08:30:14', 'CC0945', 'GO0819', 'MR CHONG', ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', '0262 41 28 65', '0692 68 68 36', 'drchong@wanadoo.fr', '', 'PHILIPPE', 'FRANCIS', 'pack focus particulier:\n2 détecteurs avec 11 contacts ', 'non', 'non', 'AUCUN', '10:00', 'non', 'non', 'non', 'non', 'non', 'vente', 0, '1,354.13 €', '431.29 €'),
-(127, 88, '2017-06-24 08:30:19', 'CC0997', 'GO0348', 'MME JEANNE BARTE ', '29 CHEMIN BERNARD', 97410, 'LE TAMPON', '29 CHEMIN BERNARD', 97410, 'LE TAMPON', '0262 57 04 06', '0692 85 14 59', 'jb974@laposte.net', '', 'BARTE', 'JEANNE', '1 PACK HABITATION FOCUS\n1 CENTRALE AVEC 2 TELECOMMANDES 3 RADARS ET 8 CONTACTS', 'oui', 'non', 'AUCUN', '07:00', 'non', 'non', 'non', 'non', 'non', 'location', 24, '0.00 €', '0.00 €'),
-(128, 88, '2017-06-24 08:30:25', 'CC0989', 'GO0798', 'MR GEORGE DELAUNAY', '4 RUE MONGOLIA', 97470, 'SAINT BENOIT', '4 RUE MONGOLIA', 97470, 'SAINT BENOIT', '0692 84 78 25', '0692 84 78 25', 'george@gmail.com', '', 'DELAUNAY', 'GEORGE', 'PACK HABITATION FOCUS : 1 CENTRALE , 2 TELECOMMANDES, 3 RADARS ET 8 CONTACTS PORTE', 'oui', 'non', 'AUCUN', '07:00', 'non', 'non', 'non', 'non', 'non', 'location', 24, '597.68 €', '0.00 €');
+-- INSERT INTO `modules_commandes` (`id`, `id_createur`, `date_creation`, `numero_devis`, `numero_comptable`, `raison_sociale`, `adresse_facturation`, `cp_facturation`, `ville_facturation`, `adresse_livraison`, `cp_livraison`, `ville_livraison`, `tel1`, `tel2`, `mail1`, `mail2`, `nom_responsable`, `prenom_responsable`, `materiel`, `telesurveillance`, `videosurveillance`, `commentaires`, `main_oeuvre`, `travaux_hauteur`, `cable_moulure`, `tranche_ext`, `cable_plafond`, `tube_iro`, `achat_location`, `engagement`, `montant_devis`, `acompte`) VALUES
+-- (124, 1, '2017-06-24 08:35:13', 'CC964', 'TS09205', 'CENTRE COMMERCIAL BEL AIR', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS', '0262 31 91 80', '0692655653', 'belair-comm@gmail.com', '', 'MARTIN', 'MONIQUE', '1 CARTOUCHE NAT 150 M3', 'oui', 'oui', '000', '03:00', 'oui', 'oui', 'oui', 'oui', 'oui', 'vente', 0, '594.70 €', '189.60 €'),
+-- (125, 5, '2017-06-24 08:35:00', 'CC907', 'CL06725', 'LA VARANGUE', '8 RUE DE L OASIS', 97434, 'SAINT GILLES', '8 ROCADE DE L\'OASIS', 97434, 'SAINT GILLES', '0262 30 20 40', '0692 65 65 71', 'lagrandevarangue@live.fr', '', 'MOREAU', 'HERVÉ', '1 CARTE CW32 - 1 CARTE EMETTEUR - RECEPTEUR RADIO -  1 CLAVIER RADIO  CW32 - 1 CARTE CHIMIQUE - 1 CARTOUCHE NAT 150 M3', 'oui', 'non', 'CONSERVER CENTRALE EXISTANTE ( SUMIT ) COMME ALIMENTATION\nPLACER CLAVIER CW32 DANS COFFRET EXTERIEUR.\nFOURNIR BATTERIE 13 VOLT 7AH POUR CENTRALE ET 1 BATTERIE 12 VOLT 2 AH POUR LA SIRENE EXTERIEURE  ARJOUTER SUR LE BON EN COMPLEMENT MATERIELS\n', '08:00', 'non', 'non', 'non', 'non', 'non', 'vente', 0, '1,731.64 €', '560.00 €'),
+-- (126, 88, '2017-06-24 08:30:14', 'CC0945', 'GO0819', 'MR CHONG', ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', '0262 41 28 65', '0692 68 68 36', 'drchong@wanadoo.fr', '', 'PHILIPPE', 'FRANCIS', 'pack focus particulier:\n2 détecteurs avec 11 contacts ', 'non', 'non', 'AUCUN', '10:00', 'non', 'non', 'non', 'non', 'non', 'vente', 0, '1,354.13 €', '431.29 €'),
+-- (127, 88, '2017-06-24 08:30:19', 'CC0997', 'GO0348', 'MME JEANNE BARTE ', '29 CHEMIN BERNARD', 97410, 'LE TAMPON', '29 CHEMIN BERNARD', 97410, 'LE TAMPON', '0262 57 04 06', '0692 85 14 59', 'jb974@laposte.net', '', 'BARTE', 'JEANNE', '1 PACK HABITATION FOCUS\n1 CENTRALE AVEC 2 TELECOMMANDES 3 RADARS ET 8 CONTACTS', 'oui', 'non', 'AUCUN', '07:00', 'non', 'non', 'non', 'non', 'non', 'location', 24, '0.00 €', '0.00 €'),
+-- (128, 88, '2017-06-24 08:30:25', 'CC0989', 'GO0798', 'MR GEORGE DELAUNAY', '4 RUE MONGOLIA', 97470, 'SAINT BENOIT', '4 RUE MONGOLIA', 97470, 'SAINT BENOIT', '0692 84 78 25', '0692 84 78 25', 'george@gmail.com', '', 'DELAUNAY', 'GEORGE', 'PACK HABITATION FOCUS : 1 CENTRALE , 2 TELECOMMANDES, 3 RADARS ET 8 CONTACTS PORTE', 'oui', 'non', 'AUCUN', '07:00', 'non', 'non', 'non', 'non', 'non', 'location', 24, '597.68 €', '0.00 €');
 
 -- --------------------------------------------------------
 
@@ -141,20 +180,20 @@ INSERT INTO `users` (`id`, `login`, `nom`, `prenom`, `pwd`, `date`, `last`, `dro
 -- Index pour la table `groupe`
 --
 ALTER TABLE `groupe`
-  ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `modules_commandes`
 --
 ALTER TABLE `modules_commandes`
-  ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_group` (`id_group`);
+ADD PRIMARY KEY (`id`),
+ADD KEY `id_group` (`id_group`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -164,17 +203,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `groupe`
 --
 ALTER TABLE `groupe`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `modules_commandes`
 --
 ALTER TABLE `modules_commandes`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 --
 -- Contraintes pour les tables exportées
 --
@@ -183,7 +222,7 @@ ALTER TABLE `users`
 -- Contraintes pour la table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `id_group` FOREIGN KEY (`id_group`) REFERENCES `groupe` (`id`);
+ADD CONSTRAINT `id_group` FOREIGN KEY (`id_group`) REFERENCES `groupe` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
