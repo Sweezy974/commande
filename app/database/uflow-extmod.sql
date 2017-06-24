@@ -29,11 +29,11 @@ CREATE TABLE `sale_document` (
 --
 
 INSERT INTO `sale_document` (`id`,`DocumentNumber`,`DocumentType`,`DocumentState`, `sysCreatedDate`,`CustomerId`, `CustomerName`, `InvoicingAddress_Address`, `InvoicingAddress_ZipCode`, `InvoicingAddress_City`, `DeliveryAddress_Address`, `DeliveryAddress_ZipCode`, `DeliveryAddress_City`, `InvoicingContact_Phone`, `InvoicingContact_CellPhone`, `InvoicingContact_Email`, `InvoicingContact_Name`, `InvoicingContact_FirstName`,`AmountVatExcluded`, `DepositAmount`) VALUES
-(124, 9730,8,1,'2017-06-24 08:35:13',5405,'CENTRE COMMERCIAL BEL AIR', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS',       '0262 31 91 80', '0692655653', 'belair-comm@gmail.com','MARTIN', 'MONIQUE','594.70 €', '189.60 €'),
-(125, 0480,8,1,'2017-06-24 08:35:00',4555,'LA VARANGUE',               '8 RUE DE L OASIS', 97434, 'SAINT GILLES', '8 ROCADE DE L\'OASIS', 97434, 'SAINT GILLES',     '0262 30 20 40', '0692 65 65 71', 'lagrandevarangue@live.fr','MOREAU', 'HERVÉ', '1,731.64 €', '560.00 €'),
-(126, 8408,6,0,'2017-06-24 08:30:14',6977,'MR CHONG',                  ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', '0262 41 28 65', '0692 68 68 36', 'drchong@wanadoo.fr', 'PHILIPPE', 'FRANCIS','1,354.13 €', '431.29 €'),
-(127, 8800,7,1,'2017-06-24 08:30:19',1827,'MME JEANNE BARTE ',         '29 CHEMIN BERNARD', 97410, 'LE TAMPON', '29 CHEMIN BERNARD', 97410, 'LE TAMPON',             '0262 57 04 06', '0692 85 14 59', 'jb974@laposte.net', 'BARTE', 'JEANNE','0.00 €', '0.00 €'),
-(128, 0054,8,1,'2017-06-24 08:30:25',2873,'MR GEORGE DELAUNAY',        '4 RUE MONGOLIA', 97470, 'SAINT BENOIT', '4 RUE MONGOLIA', 97470, 'SAINT BENOIT',             '0692 84 78 25', '0692 84 78 25', 'george@gmail.com', 'DELAUNAY', 'GEORGE', '597.68 €', '0.00 €');
+(124, 9730,8,1,'2017-06-24 08:35:13',5405,'CENTRE COMMERCIAL BEL AIR', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS', '145 RUE DU BEL-AIR', 97450, 'SAINT LOUIS',       '0262 31 91 80', '0692655653', 'belair-comm@gmail.com','MARTIN', 'MONIQUE','594.70 ', '189.60 '),
+(125, 0480,8,1,'2017-06-24 08:35:00',4555,'LA VARANGUE',               '8 RUE DE L OASIS', 97434, 'SAINT GILLES', '8 ROCADE DE L\'OASIS', 97434, 'SAINT GILLES',     '0262 30 20 40', '0692 65 65 71', 'lagrandevarangue@live.fr','MOREAU', 'HERVÉ', '1,731.64 ', '560.00 '),
+(126, 8408,6,0,'2017-06-24 08:30:14',6977,'MR CHONG',                  ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', ' CHEMIN DU RUISSEAU BLANC', 97420, 'LE PORT', '0262 41 28 65', '0692 68 68 36', 'drchong@wanadoo.fr', 'PHILIPPE', 'FRANCIS','1,354.13 ', '431.29 '),
+(127, 8800,7,1,'2017-06-24 08:30:19',1827,'MME JEANNE BARTE ',         '29 CHEMIN BERNARD', 97410, 'LE TAMPON', '29 CHEMIN BERNARD', 97410, 'LE TAMPON',             '0262 57 04 06', '0692 85 14 59', 'jb974@laposte.net', 'BARTE', 'JEANNE','0.00 ', '0.00 '),
+(128, 0054,8,1,'2017-06-24 08:30:25',2873,'MR GEORGE DELAUNAY',        '4 RUE MONGOLIA', 97470, 'SAINT BENOIT', '4 RUE MONGOLIA', 97470, 'SAINT BENOIT',             '0692 84 78 25', '0692 84 78 25', 'george@gmail.com', 'DELAUNAY', 'GEORGE', '597.68 ', '0.00 ');
 
 -- --------------------------------------------------------
 

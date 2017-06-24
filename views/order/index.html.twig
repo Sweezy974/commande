@@ -25,7 +25,7 @@
 
         <tbody id="results">
           {% for order in orderList %}
-          <tr><td>{{ order.raison_sociale }}</td><td>{{ order.numero_devis }}</td><td>{{ order.numero_comptable }}€</td><td>{{ order.date_creation|date("d/m/Y") }}</td><td>{{ order.montant_devis }}€ </td><td><a class="btn wave-effect" href="?c=order&t=new">traiter</a></td></tr>
+          <tr><td>{{ order.CustomerName }}</td><td>{{ order.CustomerId }}</td><td>{{ order.DocumentNumber }}€</td><td>{{ order.sysCreatedDate|date("d/m/Y") }}</td><td>{{ order.DepositAmount }}€ </td><td><a class="btn wave-effect" href="?c=order&t=new">traiter</a></td></tr>
           {% endfor %}
         </tbody>
       </table>

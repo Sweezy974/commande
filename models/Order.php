@@ -58,18 +58,26 @@ class Order extends Connect
   public function fetchAll()
   {
     $connexion = $this->getConnexionEBP();
-    $sql = "SELECT  CustomerName  , CustomerId  , DocumentState  , DocumentNumber  , DocumentType  , DeliveryAddress_ZipCode  ,
-    InvoicingAddress_ZipCode  , DeliveryContact_Phone  , DeliveryAddress_Address1  , InvoicingContact_Email  , DeliveryAddress_City  ,
-    InvoicingAddress_Address1  , InvoicingAddress_City  , DeliveryContact_CellPhone  , InvoicingContact_Phone  , InvoicingContact_CellPhone  ,
-    InvoicingContact_Name  , InvoicingContact_FirstName  , Id  , sysCreatedDate  , AmountVatExcluded  , DepositAmount  , sysCreatedUser  from SaleDocument
-    WHERE DocumentType='8' AND (DeliveryState ='0' OR DeliveryState ='1') ORDER BY sysCreatedDate DESC";
+    $sql = "SELECT id , CustomerName , DocumentNumber,CustomerId , sysCreatedDate , DepositAmount FROM sale_document WHERE DocumentType='8' ORDER BY sysCreatedDate DESC";
     $stmt = $connexion->prepare($sql);
-    echo $sql;
+    // echo $sql;
     $stmt->execute();
     $results = $stmt->fetchAll();
-    // return $results;
-    var_dump($results);
+    return $results;
+    // var_dump($results);
   }
+  // public function fetchAllInformation()
+  // {
+  //   $connexion = $this->getConnexionEBP();
+  //   $sql = "SELECT * WHERE DocumentType='8' ORDER BY sysCreatedDate DESC";
+  //   $stmt = $connexion->prepare($sql);
+  //   echo $sql;
+  //   $stmt->execute();
+  //   $results = $stmt->fetchAll();
+  //   // return $results;
+  //   var_dump($results);
+  // }
+
 
 
 
