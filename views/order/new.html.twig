@@ -41,13 +41,13 @@
 
           <div class="row col m12 s12 center">
             <div class=" col s12">
-              <h6 style = "font-weight:bolder;">Numéro du Document : <?php echo $response['NumeroDocument'];?></h6>
+              <h6 style = "font-weight:bolder;">Numéro du Document : {% for order in orderInformation %}{{order.DocumentNumber}}{% endfor %}</h6>
               <input type="text" id="numeroDevis" name="numeroDevis" value="">
             </div>
           </div>
           <div class="row col m12 s12 center">
             <div class=" col s12">
-              <h6 style = "font-weight:bolder;">date : <?php echo $response['DateCreation'];?></h6>
+              <h6 style = "font-weight:bolder;">date : {% for order in orderInformation %}{{order.sysCreatedDate}}{% endfor %}</h6>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
 
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s4 offset-s2">
-              <input  onchange="checkOrderInput()" id="rs" name="raisonSociale"  type="text" class=""  value="">
+              <input  onchange="checkOrderInput()" id="rs" name="raisonSociale"  type="text" class=""  value="{% for order in orderInformation %}{{order.CustomerName}}{% endfor %}">
               <label for="rs" ><i class="fa fa-building-o"></i> Raison Sociale</label>
             </div>
             <div class="input-field col s4">

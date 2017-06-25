@@ -39,7 +39,7 @@ class Order extends Connect
   protected $_montantDevis;
   protected $_acompte;
   protected $_numeroDevis;
-
+  protected $_documentNumber;
 
 
 
@@ -66,17 +66,17 @@ class Order extends Connect
     return $results;
     // var_dump($results);
   }
-  // public function fetchAllInformation()
-  // {
-  //   $connexion = $this->getConnexionEBP();
-  //   $sql = "SELECT * WHERE DocumentType='8' ORDER BY sysCreatedDate DESC";
-  //   $stmt = $connexion->prepare($sql);
-  //   echo $sql;
-  //   $stmt->execute();
-  //   $results = $stmt->fetchAll();
-  //   // return $results;
-  //   var_dump($results);
-  // }
+
+  public function find($DocumentNumber)
+  {
+    $connexion = $this->getConnexionEBP();
+    $sql = "SELECT * FROM sale_document WHERE DocumentType='8' AND DocumentNumber =:DocumentNumber";
+    $stmt = $connexion->prepare($sql);
+    $stmt->execute(array(':DocumentNumber' => $DocumentNumber));
+    $results = $stmt->fetchAll();
+    return $results;
+    // var_dump($results);
+  }
 
 
 
@@ -87,6 +87,7 @@ class Order extends Connect
     // $raisonSociale = $this->getRaisonSociale();
     // echo $raisonSociale;
     // save form values in variable
+    $DocumentNumber= $this->getDocumentNumber();
     $codeClient= $this->getCodeClient();
     $raisonSociale = $this->getRaisonSociale();
     $adresseLivraison = $this->getAdresseLivraison();
@@ -117,6 +118,7 @@ class Order extends Connect
     $acompte = $this->getAcompte();
     $numeroDevis = $this->getNumeroDevis();
 
+    echo $DocumentNumber."<br>";
     echo $codeClient."<br>";
     echo $raisonSociale."<br>";
     echo $adresseLivraison."<br>";
@@ -551,6 +553,18 @@ class Order extends Connect
         $this->_numeroDevis = $numeroDevis;
         return $this;
       }
+
+      public function getDocumentNumber()
+      {
+        return $this->_documentNumber;
+      }
+
+      public function setDocumentNumber($DocumentNumber)
+      {
+        $this->_documentNumber = $DocumentNumber;
+        return $this;
+      }
+
 
 
 
