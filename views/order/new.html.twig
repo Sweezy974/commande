@@ -26,235 +26,250 @@
         <div class="input-field col s4 offset-s4">
           <select id="groupe"  onchange="contact(this.value)">
             <option value="" class="center" disabled selected >Selectionner un contact </option>
-                <option value="{{order.CustomerName}}" class="center">{{order.CustomerName}}</option>
-                <option value="not">Pas dans la liste</option>
-              </select>
-              <label class="center">Contact :</label>
-            </div>
+            <option value="{{order.CustomerName}}" class="center">{{order.CustomerName}}</option>
+            <option value="not">Pas dans la liste</option>
+          </select>
+          <label class="center">Contact :</label>
+        </div>
+      </div>
+
+      <div class="row col m12 s12 center">
+        <div class=" col s12">
+          <h6 style = "font-weight:bolder;">Numéro du Document : {{order.DocumentNumber}}</h6>
+          <input type="text" id="numeroDevis" name="numeroDevis" value="{{order.DocumentNumber}}">
+        </div>
+      </div>
+      <div class="row col m12 s12 center">
+        <div class=" col s12">
+          <h6 style = "font-weight:bolder;">date : {{order.sysCreatedDate}}</h6>
+        </div>
+      </div>
+
+
+      <div class="row col m12 s12 center" style="margin-bottom:60px;">
+        <div class=" col s12 ">
+          <h6><?php echo $numero_client; ?></h6>
+        </div>
+      </div>
+
+
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s4 offset-s2">
+          <input  onchange="checkOrderInput()" id="rs" name="raisonSociale"  type="text" class=""  value="{{order.CustomerName}}">
+          <label for="rs" ><i class="fa fa-building-o"></i> Raison Sociale</label>
+        </div>
+        <div class="input-field col s4">
+          <input  onchange="checkOrderInput()" id="codeClient" name="codeClient"  type="text" class=""  value="{{order.CustomerId}}">
+          <label for="last_name " >Code Client</label>
+        </div>
+      </div>
+
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s4 offset-s2">
+          <input  onchange="checkOrderInput()" id="devis" name="montantDevis"  type="text" class=""  value="{{order.CustomerName}}">
+          <label for="devis " ><i class="fa fa-euro"></i> Montant du devis</label>
+        </div>
+        <div class="input-field col s4">
+          <input  onchange="checkOrderInput()" id="acompte" name="acompte"  type="text" class=""  value="{{order.CustomerName}}">
+          <label for="accompte" > Montant de l'acompte</label>
+        </div>
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s4 offset-s2">
+          <input required placeholder="Nom du responsable *" onchange="checkOrderInput()" id="nom_rep" name="nomResponsable" type="text" class=""  value="{{order.InvoicingContact_Name}}">
+          <label for="nomResponsable" > Nom responsable *</label>
+        </div>
+        <div class="input-field col s4">
+          <input required placeholder="Prénom du responsable *" onchange="checkOrderInput()" name="prenomResponsable" id="prenom_rep"  type="text" class=""  value="{{order.InvoicingContact_FirstName}}">
+          <label for="prenomResponsable" >Prénom responsable *</label>
+        </div>
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s8 offset-s2">
+          <input required placeholder="Adresse de livraison *" onchange="checkOrderInput()" id="adresseLivraison" name="adresseLivraison"  type="text" class=""  value="{{order.DeliveryAddress_Address}}">
+          <label for="nomResponsable" > Adresse de Livraison *</label>
+        </div>
+
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s4 offset-s2">
+          <input required placeholder="CP de livraison *" onchange="checkOrderInput()" id="cpLivraison" name="cpLivraison" type="text" class=""  value="{{order.DeliveryAddress_ZipCode}}">
+          <label for="cpLivraison" > CP de livraison *</label>
+        </div>
+        <div class="input-field col s4 ">
+          <input required placeholder="Ville de livraison *" onchange="checkOrderInput()" id="villeLivraison" name="villeLivraison"   type="text" class=""  value="{{order.DeliveryAddress_City}}">
+          <label for="villeLivraison" > Ville de livraison *</label>
+        </div>
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s4 offset-s2">
+          <input required placeholder="Tel * "  onchange="checkOrderInput()" name="tel1" id="tel1"  type="text" class=""  value="{{order.InvoicingContact_Phone}}">
+          <label for="tel1" > Numéro de téléphone n°1 *</label>
+        </div>
+        <div class="input-field col s4">
+          <input placeholder="Tel 2"  onchange="checkOrderInput()" name="tel2" id="tel2"  type="text" class="" value="{{order.InvoicingContact_CellPhone}}">
+          <label for="tel2" > Numéro de téléphone n°2 </label>
+        </div>
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s4 offset-s2">
+          <input  required placeholder="Mail *" onchange="checkOrderInput()" name="mail1"  id="mail1" type="text" class=""  value="{{order.InvoicingContact_Email}}">
+          <label for="mail1" > Adresse mail n°1 *</label>
+        </div>
+        <div class="input-field col s4">
+          <input placeholder="Mail 2 " name="mail2"  id="mail2" type="text" class="" >
+          <label for="mail2" > Adresse mail n°2 </label>
+        </div>
+      </div>
+
+
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s8 offset-s2">
+          <input  placeholder="Adresse de facturation" onchange="checkOrderInput()" id="adresseFacturation" name="adresseFacturation"  type="text" class="" value="{{order.DeliveryAddress_Address}}">
+          <label for="adresseFacturation" > Adresse de facturation </label>
+        </div>
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s4 offset-s2">
+          <input  placeholder="CP de facturation" onchange="checkOrderInput()" id="cpFacturation" name="cpFacturation"  type="text" class="" value="{{order.DeliveryAddress_ZipCode}}">
+          <label for="cpFacturation" > CP de facturation</label>
+        </div>
+        <div class="input-field col s4 ">
+          <input  placeholder="Ville de facturation" onchange="checkOrderInput()" id="villeFacturation" name="villeFacturation"  type="text" class="" value="{{order.DeliveryAddress_City}}">
+          <label for="villeFacturation" >Ville de facturation </label>
+        </div>
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+
+        <div class="col offset-s2 s8 input-field">
+          <textarea required id="materiel" name="materiel" class="materialize-textarea"></textarea>
+          <label for="materiel" >Matériel *</label>
+        </div>
+
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="input-field col s4 offset-s2">
+          <p>
+            <input type="checkbox" id="tls" value="oui" name="telesurveillance" />
+            <label for="tls">Télésurveillance</label>
+          </p>
+        </div>
+        <div class="input-field col s4">
+          <p>
+            <input type="checkbox" id="vds" value="oui" name="videosurveillance"/>
+            <label for="vds">Vidéo-surveillance</label>
+          </p>
+        </div>
+      </div>
+      <div class="row col m12 s12" style="height: 60px;">
+        <div class="offset-s2 col s2">
+          <p>
+            <input name="locationOuVente" type="radio" id="location" class="locationOuVente" value="location" onclick="$('#moisEngagement').removeAttr('disabled');"/>
+            <label for="location">location</label>
+          </p>
+          <p>
+            <input name="locationOuVente" type="radio" id="vente" class="locationOuVente" value="vente" onclick="$('#moisEngagement').attr('disabled', '');"/>
+            <label for="vente">vente</label>
+          </p>
+        </div>
+        <div class="input-field col s4" id="diveng">
+          <div class="col s8">
+            <input id="moisEngagement" type="number" name="engagementLocation" placeholder="Nb mois d'engagement" min="0" value="0" disabled >
           </div>
-
-          <div class="row col m12 s12 center">
-            <div class=" col s12">
-              <h6 style = "font-weight:bolder;">Numéro du Document : {{order.DocumentNumber}}</h6>
-              <input type="text" id="numeroDevis" name="numeroDevis" value="{{order.DocumentNumber}}">
-            </div>
-          </div>
-          <div class="row col m12 s12 center">
-            <div class=" col s12">
-              <h6 style = "font-weight:bolder;">date : {{order.sysCreatedDate}}</h6>
-            </div>
-          </div>
-
-
-          <div class="row col m12 s12 center" style="margin-bottom:60px;">
-            <div class=" col s12 ">
-              <h6><?php echo $numero_client; ?></h6>
-            </div>
-          </div>
-
-
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s4 offset-s2">
-              <input  onchange="checkOrderInput()" id="rs" name="raisonSociale"  type="text" class=""  value="{{order.CustomerName}}">
-              <label for="rs" ><i class="fa fa-building-o"></i> Raison Sociale</label>
-            </div>
-            <div class="input-field col s4">
-              <input  onchange="checkOrderInput()" id="codeClient" name="codeClient"  type="text" class=""  value="{{order.CustomerId}}">
-              <label for="last_name " >Code Client</label>
-            </div>
-          </div>
-
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s4 offset-s2">
-              <input  onchange="checkOrderInput()" id="devis" name="montantDevis"  type="text" class=""  value="{{order.CustomerName}}">
-              <label for="devis " ><i class="fa fa-euro"></i> Montant du devis</label>
-            </div>
-            <div class="input-field col s4">
-              <input  onchange="checkOrderInput()" id="acompte" name="acompte"  type="text" class=""  value="{{order.CustomerName}}">
-              <label for="accompte" > Montant de l'acompte</label>
-            </div>
-          </div>
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s4 offset-s2">
-              <input placeholder="Nom du responsable *" onchange="checkOrderInput()" id="nom_rep" name="nomResponsable" type="text" class=""  value="{{order.InvoicingContact_Name}}">
-
-            </div>
-            <div class="input-field col s4">
-              <input  placeholder="Prénom du responsable *" onchange="checkOrderInput()" name="prenomResponsable" id="prenom_rep"  type="text" class=""  value="{{order.InvoicingContact_FirstName}}">
-            </div>
-          </div>
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s8 offset-s2">
-              <input placeholder="Adresse de livraison *" onchange="checkOrderInput()" id="adresseLivraison" name="adresseLivraison"  type="text" class=""  value="{{order.DeliveryAddress_Address}}">
-            </div>
+          <div class="col s4">
+            <p>Mois</p>
 
           </div>
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s4 offset-s2">
-              <input placeholder="CP de livraison *" onchange="checkOrderInput()" id="cpLivraison" name="cpLivraison" type="text" class=""  value="{{order.DeliveryAddress_ZipCode}}">
-            </div>
-            <div class="input-field col s4 ">
-              <input placeholder="Ville de livraison *" onchange="checkOrderInput()" id="villeLivraison" name="villeLivraison"   type="text" class=""  value="{{order.DeliveryAddress_City}}">
-            </div>
-          </div>
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s4 offset-s2">
-              <input placeholder="Tel * "  onchange="checkOrderInput()" name="tel1" id="tel1"  type="text" class=""  value="{{order.InvoicingContact_Phone}}">
-            </div>
-            <div class="input-field col s4">
-              <input placeholder="Tel 2"  onchange="checkOrderInput()" name="tel2" id="tel2"  type="text" class="" value="{{order.InvoicingContact_CellPhone}}">
-            </div>
-          </div>
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s4 offset-s2">
-              <input  placeholder="Mail *" onchange="checkOrderInput()" name="mail1"  id="mail1" type="text" class=""  value="{{order.InvoicingContact_Email}}">
-            </div>
-            <div class="input-field col s4">
-              <input placeholder="Mail 2 " name="mail2"  id="mail2" type="text" class="" >
-            </div>
-          </div>
+        </div>
+      </div>
+      <div class="row col m12 s12" style="padding-top:20px;">
+        <div class="input-field col s2 offset-s2">
+          <input name="mainOeuvre" id="mainOeuvre"  type="time" placeholder="heure de main-oeuvre" value="00:00">
+        </div>
+        <div class="col s6" >
+          <p style="padding-top: 15px;">Heure(s) de main-oeuvre (précisez les minutes)</p>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col offset-s2 s4 right-align"  style="margin-top:60px;">
+          <h6>Travaux en hauteur + de 2.5m * </h6>
+        </div>
+        <div required class="col s6 left-align" style="padding-top: 3px;margin-top:60px;">
+
+          <input name="travauxHauteur" type="radio" class="travauxHauteur" id="plusde" value="oui" />
+          <label for="plusde">oui </label>
+          <input name="travauxHauteur" type="radio" class="travauxHauteur" id="moinsde " value="non" />
+          <label for="moinsde ">non</label>
+
+        </div>
+      </div>
+      <div class="row " style="">
+        <div class="col offset-s2 s4 right-align">
+          <h6>Passage de cable en moulure *</h6>
+        </div>
+        <div class="col s6 left-align" style="padding-top: 3px;">
+
+          <input name="cableMoulure" class="moulure" type="radio" id="oui2"  value="oui" />
+          <label for="oui2">oui</label>
+          <input name="cableMoulure" class="moulure" type="radio" id="non2 " value="non"  />
+          <label for="non2 ">non</label>
+
+        </div>
+      </div>
+      <div class="row " style="">
+        <div class="col offset-s2 s4 right-align">
+          <h6>Passage de cable en faut plafond *</h6>
+        </div>
+        <div class="col s6 left-align" style="padding-top: 3px;">
+
+          <input name="cablePlafond" class="plafond" type="radio" id="oui1" value="oui" />
+          <label for="oui1">oui</label>
+          <input name="cablePlafond" class="plafond" type="radio" id="non1 " value="non"  />
+          <label for="non1 ">non</label>
+
+        </div>
+      </div>
+      <div class="row " style="">
+        <div class="col offset-s2 s4 right-align">
+          <h6>Tranché en exterieur * </h6>
+        </div>
+        <div class="col s6 left-align" style="padding-top: 3px;">
+
+          <input class="trancheExterieur" name="trancheExterieur" type="radio" id="oui4"  value="oui" />
+          <label for="oui4">oui</label>
+          <input class="trancheExterieur" name="trancheExterieur" type="radio" id="non4 " value="non" />
+          <label for="non4 ">non</label>
+
+        </div>
+      </div>
+      <div class="row " style="">
+        <div class="col offset-s2 s4 right-align">
+          <h6>Passage en extérieur avec des tubes IRO *</h6>
+        </div>
+        <div class="col s6 left-align" style="padding-top: 3px;">
+
+          <input name="tubeIro" class="tubeiro" type="radio" id="oui3" value="oui" />
+          <label for="oui3">oui</label>
+          <input name="tubeIro" class="tubeiro" type="radio" id="non3 " value="non"/>
+          <label for="non3 ">non</label>
+
+        </div>
+      </div>
+      <div class="col offset-s2 s8 input-field">
+        <textarea id="coms" name="commentaires" class="materialize-textarea"></textarea>
+        <label for="coms">Commentaires *</label>
+      </div>
+      <div class="col offset-s2 col s4">
+        <p style="color:grey;">* champs obligatoires</p>
+      </div>
+      <div class="col offset-s2 s8 center">
+        <input type="submit" name="valid" id="valid" value="Enregistrer" class="btn btn-success">
+      </div>
 
 
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s8 offset-s2">
-              <input  placeholder="Adresse de facturation" onchange="checkOrderInput()" id="adresseFacturation" name="adresseFacturation"  type="text" class="" value="{{order.DeliveryAddress_Address}}">
-            </div>
-          </div>
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s4 offset-s2">
-              <input  placeholder="CP de facturation" onchange="checkOrderInput()" id="cpFacturation" name="cpFacturation"  type="text" class="" value="{{order.DeliveryAddress_ZipCode}}">
-            </div>
-            <div class="input-field col s4 ">
-              <input  placeholder="Ville de facturation" onchange="checkOrderInput()" id="villeFacturation" name="villeFacturation"  type="text" class="" value="{{order.DeliveryAddress_City}}">
-            </div>
-          </div>
-          <div class="row col m12 s12" style="height: 60px;">
+    </form>
 
-            <div class="col offset-s2 s8">
-              <textarea placeholder="materiel *" id="materiel" name="materiel" class="materialize-textarea"></textarea>
-            </div>
+    {% endblock %}
+    {% endfor %}
 
-          </div>
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="input-field col s4 offset-s2">
-              <p>
-                <input type="checkbox" id="tls" value="oui" name="telesurveillance" />
-                <label for="tls">Télésurveillance</label>
-              </p>
-            </div>
-            <div class="input-field col s4">
-              <p>
-                <input type="checkbox" id="vds" value="oui" name="videosurveillance"/>
-                <label for="vds">Vidéo-surveillance</label>
-              </p>
-            </div>
-          </div>
-          <div class="row col m12 s12" style="height: 60px;">
-            <div class="offset-s2 col s2">
-              <p>
-                <input name="locationOuVente" type="radio" id="location" class="locationOuVente" value="location" onclick="$('#moisEngagement').removeAttr('disabled');"/>
-                <label for="location">location</label>
-              </p>
-              <p>
-                <input name="locationOuVente" type="radio" id="vente" class="locationOuVente" value="vente" onclick="$('#moisEngagement').attr('disabled', '');"/>
-                <label for="vente">vente</label>
-              </p>
-            </div>
-            <div class="input-field col s4" id="diveng">
-              <div class="col s8">
-                <input id="moisEngagement" type="number" name="engagementLocation" placeholder="Nb mois d'engagement" min="0" value="0" disabled >
-              </div>
-              <div class="col s4">
-                <p>Mois</p>
-
-              </div>
-            </div>
-          </div>
-          <div class="row col m12 s12" style="padding-top:20px;">
-            <div class="input-field col s2 offset-s2">
-              <input name="mainOeuvre" id="mainOeuvre"  type="time" placeholder="heure de main-oeuvre" value="00:00">
-            </div>
-            <div class="col s6" >
-              <p style="padding-top: 15px;">Heure(s) de main-oeuvre (précisez les minutes)</p>
-            </div>
-          </div>
-          <div class="row ">
-            <div class="col offset-s2 s4 right-align"  style="margin-top:60px;">
-              <h6>Travaux en hauteur + de 2.5m * </h6>
-            </div>
-            <div class="col s6 left-align" style="padding-top: 3px;margin-top:60px;">
-
-              <input name="travauxHauteur" type="radio" class="travauxHauteur" id="plusde" value="oui" />
-              <label for="plusde">oui </label>
-              <input name="travauxHauteur" type="radio" class="travauxHauteur" id="moinsde " value="non" />
-              <label for="moinsde ">non</label>
-
-            </div>
-          </div>
-          <div class="row " style="">
-            <div class="col offset-s2 s4 right-align">
-              <h6>Passage de cable en moulure *</h6>
-            </div>
-            <div class="col s6 left-align" style="padding-top: 3px;">
-
-              <input name="cableMoulure" class="moulure" type="radio" id="oui2"  value="oui" />
-              <label for="oui2">oui</label>
-              <input name="cableMoulure" class="moulure" type="radio" id="non2 " value="non"  />
-              <label for="non2 ">non</label>
-
-            </div>
-          </div>
-          <div class="row " style="">
-            <div class="col offset-s2 s4 right-align">
-              <h6>Passage de cable en faut plafond *</h6>
-            </div>
-            <div class="col s6 left-align" style="padding-top: 3px;">
-
-              <input name="cablePlafond" class="plafond" type="radio" id="oui1" value="oui" />
-              <label for="oui1">oui</label>
-              <input name="cablePlafond" class="plafond" type="radio" id="non1 " value="non"  />
-              <label for="non1 ">non</label>
-
-            </div>
-          </div>
-          <div class="row " style="">
-            <div class="col offset-s2 s4 right-align">
-              <h6>Tranché en exterieur * </h6>
-            </div>
-            <div class="col s6 left-align" style="padding-top: 3px;">
-
-              <input class="trancheExterieur" name="trancheExterieur" type="radio" id="oui4"  value="oui" />
-              <label for="oui4">oui</label>
-              <input class="trancheExterieur" name="trancheExterieur" type="radio" id="non4 " value="non" />
-              <label for="non4 ">non</label>
-
-            </div>
-          </div>
-          <div class="row " style="">
-            <div class="col offset-s2 s4 right-align">
-              <h6>Passage en extérieur avec des tubes IRO *</h6>
-            </div>
-            <div class="col s6 left-align" style="padding-top: 3px;">
-
-              <input name="tubeIro" class="tubeiro" type="radio" id="oui3" value="oui" />
-              <label for="oui3">oui</label>
-              <input name="tubeIro" class="tubeiro" type="radio" id="non3 " value="non"/>
-              <label for="non3 ">non</label>
-
-            </div>
-          </div>
-          <div class="col offset-s2 s8">
-            <textarea placeholder="Commentaires * " id="coms" name="commentaires" class="materialize-textarea"></textarea>
-          </div>
-          <div class="col offset-s2 col s4">
-            <p style="color:grey;">* champs obligatoires</p>
-          </div>
-          <input type="submit" name="valid" id="valid" value="Enregistrer" class="btn btn-success">
-
-
-        </form>
-
-  {% endblock %}
-  {% endfor %}
-
-{% include "base/bottom.html.twig"%}
+    {% include "base/bottom.html.twig"%}

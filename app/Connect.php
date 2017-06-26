@@ -17,7 +17,7 @@ class Connect
       $this->assertNotNull($this->connexion);
   }
   public function getConnexion() {
-      $this->connexion = new PDO('mysql:host=localhost;dbname=sqlserver', 'root', '');
+      $this->connexion = new PDO('mysql:host=localhost;dbname=uflow', 'root', '');
       $this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       return $this->connexion;
   }

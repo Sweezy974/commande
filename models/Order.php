@@ -41,24 +41,20 @@ class Order extends Connect
   protected $_numeroDevis;
   protected $_documentNumber;
 
-
-
-  // public function fetchAll()
-  // {
-  //   $connexion = $this->getConnexion();
-  //   $sql = "SELECT * FROM modules_commandes ";
-  //   $stmt = $connexion->prepare($sql);
-  //   $stmt->execute();
-  //   $results = $stmt->fetchAll();
-  //   return $results;
-  //   var_dump($results);
-  // }
-
-
+  
+  // display all order non-treated
   public function fetchAll()
   {
     $connexion = $this->getConnexionEBP();
-    $sql = "SELECT id , CustomerName , DocumentNumber,CustomerId , sysCreatedDate , DepositAmount FROM sale_document WHERE DocumentType='8' ORDER BY sysCreatedDate DESC";
+    // $sql = "SELECT id , CustomerName , DocumentNumber,CustomerId , sysCreatedDate , DepositAmount FROM `sqlserver`.`sale_document` WHERE DocumentType='8'  ORDER BY sysCreatedDate DESC";
+    // $sql = "SELECT `sale_document`.`CustomerName`,`sale_document`.`CustomerId`,`sale_document`.`DocumentNumber`,`sale_document`.`sysCreatedDate` , `sale_document`.`DepositAmount`,`modules_commandes`.`numero_devis`
+    //         FROM `sqlserver`.`sale_document`
+    //         LEFT JOIN `uflow`.`modules_commandes`
+    //         ON `sale_document`.`DocumentNumber` != `modules_commandes`.`numero_devis`
+    //         WHERE DocumentType='8' ORDER BY sysCreatedDate DESC";
+    $sql = "SELECT id , CustomerName , DocumentNumber,CustomerId , sysCreatedDate , DepositAmount FROM `sqlserver`.`sale_document`
+    WHERE DocumentType='8' AND (`sale_document`.`DocumentNumber`) NOT IN
+    (SELECT `modules_commandes`.`numero_devis` FROM `uflow`.`modules_commandes` WHERE `sale_document`.`DocumentNumber` = `modules_commandes`.`numero_devis` ); ORDER BY sysCreatedDate DESC";
     $stmt = $connexion->prepare($sql);
     // echo $sql;
     $stmt->execute();
