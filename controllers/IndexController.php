@@ -24,9 +24,10 @@ class IndexController extends Controller
      $user = new User();
      $username = $_POST['login'];
      $password = $_POST['password'];
+     $password = md5($password);
 
      $check = $user->login($username,$password);
-     echo "string";
+    //  echo "string";
     //  $order = new Order();
     //  $DocumentNumber = $_GET['pk'];
     //  $orderInformation = $order->find($DocumentNumber);

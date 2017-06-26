@@ -7,7 +7,7 @@ use \Twig_Loader_Filesystem;
 use \Twig_Environment;
 
 
-class OrderController extends Controller
+class OrderController extends IndexController
 {
    protected $twig;
    public function index()
