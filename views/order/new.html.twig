@@ -35,13 +35,13 @@
 
       <div class="row col m12 s12 center">
         <div class=" col s12">
-          <h6 style = "font-weight:bolder;">Numéro du Document : {{order.DocumentNumber}}</h6>
-          <input type="text" id="numeroDevis" name="numeroDevis" value="{{order.DocumentNumber}}">
+          <h6 style ="font-weight:bolder;">Numéro du Document : {{order.DocumentNumber}}</h6>
+          <input type="text" id="numeroDevis" name="numeroDevis" value="{{order.DocumentNumber}}" hidden>
         </div>
       </div>
       <div class="row col m12 s12 center">
         <div class=" col s12">
-          <h6 style = "font-weight:bolder;">date : {{order.sysCreatedDate}}</h6>
+          <h6 style = "font-weight:bolder;">date : {{order.sysCreatedDate|date("m/d/Y")}}</h6>
         </div>
       </div>
 
