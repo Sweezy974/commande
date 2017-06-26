@@ -93,7 +93,7 @@
       </div>
       <div class="row col m12 s12" style="height: 60px;">
         <div class="input-field col s4 offset-s2">
-          <input required placeholder="CP de livraison *" onchange="checkOrderInput()" id="cpLivraison" name="cpLivraison" type="text" class=""  value="{{order.DeliveryAddress_ZipCode}}">
+          <input  required placeholder="CP de livraison *" onchange="checkOrderInput()" id="cpLivraison" name="cpLivraison" type="number" class=""  value="{{order.DeliveryAddress_ZipCode}}">
           <label for="cpLivraison" > CP de livraison *</label>
         </div>
         <div class="input-field col s4 ">
@@ -103,21 +103,21 @@
       </div>
       <div class="row col m12 s12" style="height: 60px;">
         <div class="input-field col s4 offset-s2">
-          <input required placeholder="Tel * "  onchange="checkOrderInput()" name="tel1" id="tel1"  type="text" class=""  value="{{order.InvoicingContact_Phone}}">
+          <input required placeholder="Tel * "  onchange="checkOrderInput()" name="tel1" id="tel1"  type="number" class=""  value="{{order.InvoicingContact_Phone}}">
           <label for="tel1" > Numéro de téléphone n°1 *</label>
         </div>
         <div class="input-field col s4">
-          <input placeholder="Tel 2"  onchange="checkOrderInput()" name="tel2" id="tel2"  type="text" class="" value="{{order.InvoicingContact_CellPhone}}">
+          <input placeholder="Tel 2"  onchange="checkOrderInput()" name="tel2" id="tel2"  type="number" class="" value="{{order.InvoicingContact_CellPhone}}">
           <label for="tel2" > Numéro de téléphone n°2 </label>
         </div>
       </div>
       <div class="row col m12 s12" style="height: 60px;">
         <div class="input-field col s4 offset-s2">
-          <input  required placeholder="Mail *" onchange="checkOrderInput()" name="mail1"  id="mail1" type="text" class=""  value="{{order.InvoicingContact_Email}}">
+          <input  required placeholder="Mail *" onchange="checkOrderInput()" name="mail1"  id="mail1" type="email" class="validate"  value="{{order.InvoicingContact_Email}}">
           <label for="mail1" > Adresse mail n°1 *</label>
         </div>
         <div class="input-field col s4">
-          <input placeholder="Mail 2 " name="mail2"  id="mail2" type="text" class="" >
+          <input placeholder="Mail 2 " name="mail2"  id="mail2" type="email" class="validate" >
           <label for="mail2" > Adresse mail n°2 </label>
         </div>
       </div>
@@ -131,7 +131,7 @@
       </div>
       <div class="row col m12 s12" style="height: 60px;">
         <div class="input-field col s4 offset-s2">
-          <input  placeholder="CP de facturation" onchange="checkOrderInput()" id="cpFacturation" name="cpFacturation"  type="text" class="" value="{{order.DeliveryAddress_ZipCode}}">
+          <input  placeholder="CP de facturation" onchange="checkOrderInput()" id="cpFacturation" name="cpFacturation"  type="number" class="" value="{{order.DeliveryAddress_ZipCode}}">
           <label for="cpFacturation" > CP de facturation</label>
         </div>
         <div class="input-field col s4 ">
@@ -168,7 +168,7 @@
             <label for="location">location</label>
           </p>
           <p>
-            <input name="locationOuVente" type="radio" id="vente" class="locationOuVente" value="vente" onclick="$('#moisEngagement').attr('disabled', '');"/>
+            <input name="locationOuVente" type="radio" id="vente" class="locationOuVente" value="vente" onclick="$('#moisEngagement').attr('disabled', '');" checked />
             <label for="vente">vente</label>
           </p>
         </div>
@@ -198,7 +198,7 @@
 
           <input name="travauxHauteur" type="radio" class="travauxHauteur" id="plusde" value="oui" />
           <label for="plusde">oui </label>
-          <input name="travauxHauteur" type="radio" class="travauxHauteur" id="moinsde " value="non" />
+          <input name="travauxHauteur" type="radio" class="travauxHauteur" id="moinsde " value="non" checked  />
           <label for="moinsde ">non</label>
 
         </div>
@@ -211,7 +211,7 @@
 
           <input name="cableMoulure" class="moulure" type="radio" id="oui2"  value="oui" />
           <label for="oui2">oui</label>
-          <input name="cableMoulure" class="moulure" type="radio" id="non2 " value="non"  />
+          <input name="cableMoulure" class="moulure" type="radio" id="non2 " value="non" checked   />
           <label for="non2 ">non</label>
 
         </div>
@@ -224,7 +224,7 @@
 
           <input name="cablePlafond" class="plafond" type="radio" id="oui1" value="oui" />
           <label for="oui1">oui</label>
-          <input name="cablePlafond" class="plafond" type="radio" id="non1 " value="non"  />
+          <input name="cablePlafond" class="plafond" type="radio" id="non1 " value="non"  checked  />
           <label for="non1 ">non</label>
 
         </div>
@@ -237,7 +237,7 @@
 
           <input class="trancheExterieur" name="trancheExterieur" type="radio" id="oui4"  value="oui" />
           <label for="oui4">oui</label>
-          <input class="trancheExterieur" name="trancheExterieur" type="radio" id="non4 " value="non" />
+          <input class="trancheExterieur" name="trancheExterieur" type="radio" id="non4 " value="non"  checked />
           <label for="non4 ">non</label>
 
         </div>
@@ -250,13 +250,13 @@
 
           <input name="tubeIro" class="tubeiro" type="radio" id="oui3" value="oui" />
           <label for="oui3">oui</label>
-          <input name="tubeIro" class="tubeiro" type="radio" id="non3 " value="non"/>
+          <input name="tubeIro" class="tubeiro" type="radio" id="non3 " value="non" checked />
           <label for="non3 ">non</label>
 
         </div>
       </div>
       <div class="col offset-s2 s8 input-field">
-        <textarea id="coms" name="commentaires" class="materialize-textarea"></textarea>
+        <textarea required id="coms" name="commentaires" class="materialize-textarea"></textarea>
         <label for="coms">Commentaires *</label>
       </div>
       <div class="col offset-s2 col s4">
@@ -271,5 +271,4 @@
 
     {% endblock %}
     {% endfor %}
-
     {% include "base/bottom.html.twig"%}
