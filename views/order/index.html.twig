@@ -10,6 +10,8 @@
   </div>
   <div class="row">
     <div class="col l12 m12 s12 ">
+
+      {% if orderList.CustomerName is not defined %}
       <table class="centered highlight ">
         <thead>
           <tr>
@@ -25,6 +27,7 @@
 
         <tbody id="results">
           {% for order in orderList %}
+
           <tr>
             <td>{{ order.CustomerName }}</td>
             <td>{{ order.CustomerId }}</td>
@@ -36,6 +39,11 @@
           {% endfor %}
         </tbody>
       </table>
+      {% else %}
+      <h5>rien à afficher</h5>
+      {% endif %}
+
+
     </div>
   </div>
 

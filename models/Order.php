@@ -41,17 +41,11 @@ class Order extends Connect
   protected $_numeroDevis;
   protected $_documentNumber;
 
-  
+
   // display all order non-treated
   public function fetchAll()
   {
     $connexion = $this->getConnexionEBP();
-    // $sql = "SELECT id , CustomerName , DocumentNumber,CustomerId , sysCreatedDate , DepositAmount FROM `sqlserver`.`sale_document` WHERE DocumentType='8'  ORDER BY sysCreatedDate DESC";
-    // $sql = "SELECT `sale_document`.`CustomerName`,`sale_document`.`CustomerId`,`sale_document`.`DocumentNumber`,`sale_document`.`sysCreatedDate` , `sale_document`.`DepositAmount`,`modules_commandes`.`numero_devis`
-    //         FROM `sqlserver`.`sale_document`
-    //         LEFT JOIN `uflow`.`modules_commandes`
-    //         ON `sale_document`.`DocumentNumber` != `modules_commandes`.`numero_devis`
-    //         WHERE DocumentType='8' ORDER BY sysCreatedDate DESC";
     $sql = "SELECT id , CustomerName , DocumentNumber,CustomerId , sysCreatedDate , DepositAmount FROM `sqlserver`.`sale_document`
     WHERE DocumentType='8' AND (`sale_document`.`DocumentNumber`) NOT IN
     (SELECT `modules_commandes`.`numero_devis` FROM `uflow`.`modules_commandes` WHERE `sale_document`.`DocumentNumber` = `modules_commandes`.`numero_devis` ); ORDER BY sysCreatedDate DESC";
@@ -63,6 +57,7 @@ class Order extends Connect
     // var_dump($results);
   }
 
+  // display all informations about the customer to prefill a non-treated order
   public function find($DocumentNumber)
   {
     $connexion = $this->getConnexionEBP();
