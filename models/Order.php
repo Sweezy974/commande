@@ -167,7 +167,7 @@ class Order extends Connect
       //     :engagementLocation ,:montantDevis,:acompte,:numeroDevis,'2014-10-02 12:00:00','88'
       //   )";
 
-      $sql ="INSERT INTO modules_commandes
+      $sql ="INSERT INTO `uflow`.`modules_commandes`
       (numero_comptable,raison_sociale,adresse_facturation,cp_facturation,ville_facturation,adresse_livraison,
         cp_livraison,ville_livraison,tel1,tel2,mail1,mail2,nom_responsable,prenom_responsable,materiel,telesurveillance,
         videosurveillance,commentaires,main_oeuvre,travaux_hauteur,cable_moulure,tranche_ext,cable_plafond,tube_iro,achat_location,

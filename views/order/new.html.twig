@@ -8,9 +8,9 @@
 
 {% include "base/layout.html.twig"%}
 {% include "base/navbar.html.twig"%}
-
+{% for order in orderInformation %}
 {% block form %}
-<form class="" action="?c=order&t=save" method="post">
+<form id="sendOrder" action="?c=order&t=save" method="post">
 
   <div class="container dash col s12 m12 l7">
     <div class="row">
@@ -26,13 +26,7 @@
         <div class="input-field col s4 offset-s4">
           <select id="groupe"  onchange="contact(this.value)">
             <option value="" class="center" disabled selected >Selectionner un contact </option>
-            <?php
-            for ($i=0; $i <=count($Contacts['lastname']) ; $i++) {
-              if ($Contacts['nom'][$i] !=""){
-                ?>
-                <option value="<?php echo $i ?>" class="center"><?php echo $Contacts['lastname'][$i] ?> <?php echo $Contacts['firstname'][$i] ?></option>
-                <?php }} ?>
-
+                <option value="{{order.CustomerName}}" class="center">{{order.CustomerName}}</option>
                 <option value="not">Pas dans la liste</option>
               </select>
               <label class="center">Contact :</label>
@@ -41,13 +35,13 @@
 
           <div class="row col m12 s12 center">
             <div class=" col s12">
-              <h6 style = "font-weight:bolder;">Numéro du Document : {% for order in orderInformation %}{{order.DocumentNumber}}{% endfor %}</h6>
-              <input type="text" id="numeroDevis" name="numeroDevis" value="">
+              <h6 style = "font-weight:bolder;">Numéro du Document : {{order.DocumentNumber}}</h6>
+              <input type="text" id="numeroDevis" name="numeroDevis" value="{{order.DocumentNumber}}">
             </div>
           </div>
           <div class="row col m12 s12 center">
             <div class=" col s12">
-              <h6 style = "font-weight:bolder;">date : {% for order in orderInformation %}{{order.sysCreatedDate}}{% endfor %}</h6>
+              <h6 style = "font-weight:bolder;">date : {{order.sysCreatedDate}}</h6>
             </div>
           </div>
 
@@ -61,59 +55,59 @@
 
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s4 offset-s2">
-              <input  onchange="checkOrderInput()" id="rs" name="raisonSociale"  type="text" class=""  value="{% for order in orderInformation %}{{order.CustomerName}}{% endfor %}">
+              <input  onchange="checkOrderInput()" id="rs" name="raisonSociale"  type="text" class=""  value="{{order.CustomerName}}">
               <label for="rs" ><i class="fa fa-building-o"></i> Raison Sociale</label>
             </div>
             <div class="input-field col s4">
-              <input  onchange="checkOrderInput()" id="codeClient" name="codeClient"  type="text" class=""  value="">
+              <input  onchange="checkOrderInput()" id="codeClient" name="codeClient"  type="text" class=""  value="{{order.CustomerId}}">
               <label for="last_name " >Code Client</label>
             </div>
           </div>
 
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s4 offset-s2">
-              <input  onchange="checkOrderInput()" id="devis" pattern= "[0-9]" name="montantDevis"  type="text" class=""  value="">
+              <input  onchange="checkOrderInput()" id="devis" name="montantDevis"  type="text" class=""  value="{{order.CustomerName}}">
               <label for="devis " ><i class="fa fa-euro"></i> Montant du devis</label>
             </div>
             <div class="input-field col s4">
-              <input  onchange="checkOrderInput()" id="acompte" pattern= "[0-9]" name="acompte"  type="text" class=""  value=" ">
+              <input  onchange="checkOrderInput()" id="acompte" name="acompte"  type="text" class=""  value="{{order.CustomerName}}">
               <label for="accompte" > Montant de l'acompte</label>
             </div>
           </div>
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s4 offset-s2">
-              <input placeholder="Nom du responsable *" onchange="checkOrderInput()" id="nom_rep" name="nomResponsable" type="text" class=""  value="">
+              <input placeholder="Nom du responsable *" onchange="checkOrderInput()" id="nom_rep" name="nomResponsable" type="text" class=""  value="{{order.InvoicingContact_Name}}">
 
             </div>
             <div class="input-field col s4">
-              <input  placeholder="Prénom du responsable *" onchange="checkOrderInput()" name="prenomResponsable" id="prenom_rep"  type="text" class=""  value="">
+              <input  placeholder="Prénom du responsable *" onchange="checkOrderInput()" name="prenomResponsable" id="prenom_rep"  type="text" class=""  value="{{order.InvoicingContact_FirstName}}">
             </div>
           </div>
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s8 offset-s2">
-              <input placeholder="Adresse de livraison *" onchange="checkOrderInput()" id="adresseLivraison" name="adresseLivraison"  type="text" class=""  value="">
+              <input placeholder="Adresse de livraison *" onchange="checkOrderInput()" id="adresseLivraison" name="adresseLivraison"  type="text" class=""  value="{{order.DeliveryAddress_Address}}">
             </div>
 
           </div>
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s4 offset-s2">
-              <input placeholder="CP de livraison *" pattern= "[0-9]"  onchange="checkOrderInput()" id="cpLivraison" name="cpLivraison" type="text" class=""  value="">
+              <input placeholder="CP de livraison *" onchange="checkOrderInput()" id="cpLivraison" name="cpLivraison" type="text" class=""  value="{{order.DeliveryAddress_ZipCode}}">
             </div>
             <div class="input-field col s4 ">
-              <input placeholder="Ville de livraison *" pattern= "[0-9]"  onchange="checkOrderInput()" id="villeLivraison" name="villeLivraison"   type="text" class=""  value="">
+              <input placeholder="Ville de livraison *" onchange="checkOrderInput()" id="villeLivraison" name="villeLivraison"   type="text" class=""  value="{{order.DeliveryAddress_City}}">
             </div>
           </div>
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s4 offset-s2">
-              <input placeholder="Tel * "  onchange="checkOrderInput()" name="tel1" id="tel1"  type="text" class=""  value="">
+              <input placeholder="Tel * "  onchange="checkOrderInput()" name="tel1" id="tel1"  type="text" class=""  value="{{order.InvoicingContact_Phone}}">
             </div>
             <div class="input-field col s4">
-              <input placeholder="Tel 2"  onchange="checkOrderInput()" name="tel2" id="tel2"  type="text" class="" value="">
+              <input placeholder="Tel 2"  onchange="checkOrderInput()" name="tel2" id="tel2"  type="text" class="" value="{{order.InvoicingContact_CellPhone}}">
             </div>
           </div>
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s4 offset-s2">
-              <input  placeholder="Mail *" onchange="checkOrderInput()" name="mail1"  id="mail1" type="text" class=""  value="">
+              <input  placeholder="Mail *" onchange="checkOrderInput()" name="mail1"  id="mail1" type="text" class=""  value="{{order.InvoicingContact_Email}}">
             </div>
             <div class="input-field col s4">
               <input placeholder="Mail 2 " name="mail2"  id="mail2" type="text" class="" >
@@ -123,15 +117,15 @@
 
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s8 offset-s2">
-              <input  placeholder="Adresse de facturation" onchange="checkOrderInput()" id="adresseFacturation" name="adresseFacturation"  type="text" class="" value="">
+              <input  placeholder="Adresse de facturation" onchange="checkOrderInput()" id="adresseFacturation" name="adresseFacturation"  type="text" class="" value="{{order.DeliveryAddress_Address}}">
             </div>
           </div>
           <div class="row col m12 s12" style="height: 60px;">
             <div class="input-field col s4 offset-s2">
-              <input  placeholder="CP de facturation" onchange="checkOrderInput()" id="cpFacturation" name="cpFacturation"  type="text" class="" value="">
+              <input  placeholder="CP de facturation" onchange="checkOrderInput()" id="cpFacturation" name="cpFacturation"  type="text" class="" value="{{order.DeliveryAddress_ZipCode}}">
             </div>
             <div class="input-field col s4 ">
-              <input  placeholder="Ville de facturation" onchange="checkOrderInput()" id="villeFacturation" name="villeFacturation"  type="text" class="" value="">
+              <input  placeholder="Ville de facturation" onchange="checkOrderInput()" id="villeFacturation" name="villeFacturation"  type="text" class="" value="{{order.DeliveryAddress_City}}">
             </div>
           </div>
           <div class="row col m12 s12" style="height: 60px;">
@@ -261,5 +255,6 @@
         </form>
 
   {% endblock %}
+  {% endfor %}
 
 {% include "base/bottom.html.twig"%}

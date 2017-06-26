@@ -33,7 +33,6 @@ public function new(){
    [
       "orderInformation" => $orderInformation
    ]);
-
    // if ($DocumentNumber !=$_GET['pk']) {
    //    header( "Location: /?c=order&t=Index" );
    // }
