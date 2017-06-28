@@ -162,12 +162,12 @@ class Order extends Connect
       (numero_comptable,raison_sociale,adresse_facturation,cp_facturation,ville_facturation,adresse_livraison,
         cp_livraison,ville_livraison,tel1,tel2,mail1,mail2,nom_responsable,prenom_responsable,materiel,telesurveillance,
         videosurveillance,commentaires,main_oeuvre,travaux_hauteur,cable_moulure,tranche_ext,cable_plafond,tube_iro,achat_location,
-        engagement,montant_devis,acompte,numero_devis,date_creation,id_createur)
+        engagement,montant_devis,acompte,numero_devis,date_creation,users_id)
         VALUES
         (:codeClient,:raisonSociale,:adresseFacturation,:cpFacturation,:villeFacturation,:adresseLivraison,
           :cpLivraison,:villeLivraison,:tel1,:tel2,:mail1,:mail2,:nomResponsable,:prenomResponsable,:materiel,:telesurveillance,
           :videosurveillance,:commentaires,:mainOeuvre,:travauxHauteur,:cableMoulure,:trancheExterieur,:cablePlafond,:tubeIro,:locationOuVente,
-          :engagementLocation,:montantDevis,:acompte,:numeroDevis,'2017-06-08 19:52:17','88')";
+          :engagementLocation,:montantDevis,:acompte,:numeroDevis,'2017-06-08 19:52:17',81)";
 
           // $sql = "INSERT INTO groupe (lib,description,etat) VALUE (:lib,:description,1) ";
 
