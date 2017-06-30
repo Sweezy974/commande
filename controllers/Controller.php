@@ -12,8 +12,8 @@ class Controller extends Connect
     function __construct()
     {
         $className = substr(get_class($this), 12, -10);
-        // Twig Configuration
-        //indique le dossie des vues par défaut à twig
+
+        //indicated the default directory of the views to twig
         $loader = new Twig_Loader_Filesystem('./views/');
         //   $loader = new Twig_Loader_Filesystem('./views/' . strtolower($className));
         $this->twig = new Twig_Environment($loader, array(

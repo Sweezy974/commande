@@ -7,9 +7,6 @@ use PDO;
 class Order extends Connect
 {
 
-  // protected $_id;
-  // protected $_title;
-  // protected $_company_name;
   protected $_codeClient;
   protected $_raisonSociale;
   protected $_adresseLivraison;
@@ -45,28 +42,25 @@ class Order extends Connect
   // display all order non-treated
   public function fetchAll()
   {
-    $connexion = $this->getConnexionEBP();
+    $connexion = $this->getConnexion();
     $sql = "SELECT id , CustomerName , DocumentNumber,CustomerId , sysCreatedDate , DepositAmount FROM `sqlserver`.`sale_document`
     WHERE DocumentType='8' AND (`sale_document`.`DocumentNumber`) NOT IN
     (SELECT `modules_commandes`.`numero_devis` FROM `uflow`.`modules_commandes` WHERE `sale_document`.`DocumentNumber` = `modules_commandes`.`numero_devis` ); ORDER BY sysCreatedDate DESC";
     $stmt = $connexion->prepare($sql);
-    // echo $sql;
     $stmt->execute();
     $results = $stmt->fetchAll();
     return $results;
-    // var_dump($results);
   }
 
   // display all informations about the customer to prefill a non-treated order
   public function find($DocumentNumber)
   {
-    $connexion = $this->getConnexionEBP();
-    $sql = "SELECT * FROM sale_document WHERE DocumentType='8' AND DocumentNumber =:DocumentNumber";
+    $connexion = $this->getConnexion();
+    $sql = "SELECT * FROM `sqlserver`.`sale_document` WHERE DocumentType='8' AND DocumentNumber =:DocumentNumber";
     $stmt = $connexion->prepare($sql);
     $stmt->execute(array(':DocumentNumber' => $DocumentNumber));
     $results = $stmt->fetchAll();
     return $results;
-    // var_dump($results);
   }
 
 
@@ -75,8 +69,6 @@ class Order extends Connect
   public function save()
   {
     $connexion =  $this->getConnexion();
-    // $raisonSociale = $this->getRaisonSociale();
-    // echo $raisonSociale;
     // save form values in variable
     $DocumentNumber= $this->getDocumentNumber();
     $codeClient= $this->getCodeClient();
@@ -109,54 +101,10 @@ class Order extends Connect
     $acompte = $this->getAcompte();
     $numeroDevis = $this->getNumeroDevis();
 
-    echo $DocumentNumber."<br>";
-    echo $codeClient."<br>";
-    echo $raisonSociale."<br>";
-    echo $adresseLivraison."<br>";
-    echo $cpLivraison."<br>";
-    echo $villeLivraison."<br>";
-    echo $adresseFacturation."<br>";
-    echo $cpFacturation."<br>";
-    echo $villeFacturation."<br>";
-    echo $tel1."<br>";
-    echo $tel2."<br>";
-    echo $mail1."<br>";
-    echo $mail2."<br>";
-    echo $nomResponsable."<br>";
-    echo $prenomResponsable."<br>";
-    echo $materiel."<br>";
-    echo $telesurveillance ."<br>";
-    echo $videosurveillance ."<br>";
-    echo $commentaires ."<br>";
-    echo $mainOeuvre."<br>";
-    echo $travauxHauteur."<br>";
-    echo $cableMoulure."<br>";
-    echo $trancheExterieur."<br>";
-    echo $cablePlafond ."<br>";
-    echo $tubeIro."<br>";
-    echo $locationOuVente."<br>";
-    echo $engagementLocation."<br>";
-    echo $montantDevis."<br>";
-    echo $acompte."<br>";
-    echo $numeroDevis."<br>";
-
-
 
 
 
     try {
-
-      // $sql = "INSERT INTO modules_commandes
-      // (numero_comptable,raison_sociale,adresse_facturation,cp_facturation,ville_facturation,adresse_livraison,
-      //   cp_livraison,ville_livraison,tel1,tel2,mail1,mail2,nom_responsable,prenom_responsable,materiel,telesurveillance,
-      //   videosurveillance,commentaires,main_oeuvre,travaux_hauteur,cable_moulure,tranche_ext,cable_plafond,tube_iro,achat_location,
-      //   engagement,montant_devis,acompte,numero_devis,date_creation,id_createur)
-      //   VALUE
-      //   (:codeClient,:raisonSociale ,:adresseFacturation ,:cpFacturation ,:villeFacturation,:adresseLivraison ,
-      //     :cpLivraison ,:villeLivraison,:tel1 ,:tel2 ,:mail1,:mail2,:nomResponsable ,:prenomResponsable,:materiel,:telesurveillance,
-      //     :videosurveillance,:commentaires,:mainOeuvre,:travauxHauteur,:cableMoulure,:trancheExterieur,:cablePlafond ,:tubeIro ,:locationOuVente,
-      //     :engagementLocation ,:montantDevis,:acompte,:numeroDevis,'2014-10-02 12:00:00','88'
-      //   )";
 
       $sql ="INSERT INTO `uflow`.`modules_commandes`
       (numero_comptable,raison_sociale,adresse_facturation,cp_facturation,ville_facturation,adresse_livraison,
@@ -169,12 +117,10 @@ class Order extends Connect
           :videosurveillance,:commentaires,:mainOeuvre,:travauxHauteur,:cableMoulure,:trancheExterieur,:cablePlafond,:tubeIro,:locationOuVente,
           :engagementLocation,:montantDevis,:acompte,:numeroDevis,'2017-06-08 19:52:17',81)";
 
-          // $sql = "INSERT INTO groupe (lib,description,etat) VALUE (:lib,:description,1) ";
 
           $stmt = $connexion->prepare ($sql);
-          // affectation des valeurs selon variable
-          // $stmt->bindParam(':raisonSociale', $raisonSociale);
-          // $stmt->bindParam(':nomResponsable', $nomResponsable);
+
+          // attribute the values which cames from the form
           $stmt->bindParam(':codeClient',$codeClient);
           $stmt->bindParam(':raisonSociale',$raisonSociale);
           $stmt->bindParam(':adresseLivraison',$adresseLivraison);
@@ -204,9 +150,6 @@ class Order extends Connect
           $stmt->bindParam(':montantDevis',$montantDevis);
           $stmt->bindParam(':acompte',$acompte);
           $stmt->bindParam(':numeroDevis',$numeroDevis);
-          var_dump($stmt);
-          echo "<br>";
-
           $stmt->execute();
 
 
