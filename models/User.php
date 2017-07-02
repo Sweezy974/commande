@@ -19,12 +19,12 @@ class User extends Connect
   public function login($username,$password)
   {
     // echo $username;
-    echo md5($password);
+    // echo md5($password);
     // $username= $this->getUsername();
     // $password= $this->getPassword();
     // $password= md5($password);
 
-    $connexion = $this->getConnexionEBP();
+    $connexion = $this->getConnexion();
     $sql = "SELECT * FROM `uflow`.`users` WHERE login=:username AND pwd=:password";
     $stmt = $connexion->prepare($sql);
     $stmt->bindParam(':username',$username);
@@ -35,15 +35,15 @@ class User extends Connect
       while ($results = $stmt->fetch(PDO::FETCH_ASSOC)) {
         # code...
 
-      // $_SESSION['id'] ="";
-      $_SESSION['id'] == $results['id'];
+      $_SESSION['id'] ="";
+      // $_SESSION['id'] == $results['0'];
       // var_dump($results);
       echo $_SESSION['id'];
       $_SESSION['open'] = 1;
     }
 
       // default redirection
-      // header('location:/?c=order&?t=index');
+      header('location:/?c=order&?t=index');
     }
     else{
       $error = "Erreur de connexion";
