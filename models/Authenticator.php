@@ -25,10 +25,10 @@ class Authenticator extends Connect
       $_SESSION['username'] =  $userInfo['login'];
       $_SESSION['lastname'] =  $userInfo['nom'];
       $_SESSION['firstname'] =  $userInfo['prenom'];
+      $_SESSION['email'] =  $userInfo['mail'];
       header("Location: ?c=order&t=index");
     }
     else {
-      $error = "erreur de connexion.Vérifier vos identifiants";
       header("Location: /?c=index");
     }
   }

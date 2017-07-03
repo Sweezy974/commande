@@ -29,11 +29,9 @@
               <input required  class="center" id="icon_telephone" type="password" class="validate" name="password" id="password">
               <label for="icon_telephone">Mot de passe</label>
             </div>
-            <div class="col s12 m12 l12">
+            <div class="col s12 m12 l12 center">
               <input type="submit" class="waves-effect waves-light btn" value="Connexion">
-              {% for errorj in errorlist %}
-              {{errorj.error}}
-              {% endfor %}
+              <p class="center">{{ error }}</p>
             </div>
           </div>
         </form>

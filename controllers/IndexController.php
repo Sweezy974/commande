@@ -14,7 +14,18 @@ class IndexController extends Controller
 
   public function index()
   {
-    echo $this->twig->render('login/index.html.twig');
+
+    if (empty($_SESSION['id'])) {
+      $error = "Erreur de connexion.Vérifier vos identifiants";
+      echo $this->twig->render('login/index.html.twig',
+      [
+        "error" => $error
+      ]);
+    }
+    else {
+      echo $this->twig->render('login/index.html.twig');
+      # code...
+    }
   }
 
   public function login()
@@ -23,16 +34,12 @@ class IndexController extends Controller
     session_set_cookie_params(0);
     $username = $_POST['username'];
     $password = md5($_POST['password']);
-    // $_SESSION["username"] = $username;
-    // $_SESSION["password"] = $password;
     $user = new User();
     $user->setUsername($username);
     $user->setPassword($password);
 
     $auth = new Authenticator();
     $auth->login($user);
-
-
   }
   public function logout()
   {

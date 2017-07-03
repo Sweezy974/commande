@@ -74,7 +74,7 @@ nav ul a:hover {
             <!-- <li><a href="#!">Déclarer un bug</a></li> -->
 
             <li class="divider"></li>
-            <li><a href="./c?=index&t=logout"><i class="fa fa-sign-out"></i>Déconnexion</a></li>
+            <li><a href="./?c=index&t=logout"><i class="fa fa-sign-out"></i>Déconnexion</a></li>
           </ul>
         </li>
           <?php echo $AdmBtnHTML; ?>
@@ -96,9 +96,9 @@ nav ul a:hover {
          <a href="#!user">
            <img class="circle" src="views/base/media/img/guitare.jpg">
          </a>
-         <a href="#!name"><span class="white-text name">Frédéric BOYER</span></a>
+         <a href="#!name"><span class="white-text name">{{ lastname }} {{ firstname| convert_encoding('UTF-8', 'ISO-8859-1') }}</span></a>
          <!-- <a href="/?action=logout"><span class="white-text email"><i class="fa fa-sign-out"></i>Déconnexion</span></a> -->
-         <a href="#!email"><span class="white-text email"><?php echo $_SESSION['mail'] ?></span></a>
+         <a href="#!email"><span class="white-text email">{{ email }}</span></a>
          <!-- <a href="/?action=logout"><span class="white-text email"><i class="fa fa-sign-out"></i>Déconnexion</span></a> -->
 
        </div>
@@ -125,7 +125,7 @@ nav ul a:hover {
              <li><a href="#!"><i class="fa fa-user-md"></i>Gérer mon compte</a></li>
              <li><a href="#!"><i class="fa fa-bar-chart"></i>Mes statistiques</a></li>
              <li class="divider"></li>
-             <li class=""><a href="/?action=logout"><i class="fa fa-sign-out"></i>Déconnexion</a></li>
+             <li class=""><a href="./?c=index&t=logout"><i class="fa fa-sign-out"></i>Déconnexion</a></li>
            </ul>
          </div>
        </li>

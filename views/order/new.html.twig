@@ -7,7 +7,6 @@
 -->
 
 {% include "base/layout.html.twig"%}
-{% include "base/navbar.html.twig"%}
 {% for order in orderInformation %}
 {% block form %}
 <form id="sendOrder" action="?c=order&t=save" method="post">
