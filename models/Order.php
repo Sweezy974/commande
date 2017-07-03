@@ -4,7 +4,7 @@ namespace Models;
 use App\Connect;
 use PDO;
 
-class Order extends Connect
+class Order extends Authenticator
 {
 
   protected $_codeClient;

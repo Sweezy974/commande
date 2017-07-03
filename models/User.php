@@ -1,71 +1,19 @@
 <?php
 namespace Models;
 
-use App\Connect;
-use PDO;
-
-if(!isset($_SESSION))
+class User
 {
-  session_start();
-}
-
-class User extends Connect
-{
-
-  protected $_username;
-  protected $_password;
-
-  // check if user exist
-  public function login($username,$password)
-  {
-    // echo $username;
-    // echo md5($password);
-    // $username= $this->getUsername();
-    // $password= $this->getPassword();
-    // $password= md5($password);
-
-    $connexion = $this->getConnexion();
-    $sql = "SELECT * FROM `uflow`.`users` WHERE login=:username AND pwd=:password";
-    $stmt = $connexion->prepare($sql);
-    $stmt->bindParam(':username',$username);
-    $stmt->bindParam(':password',$password);
-    $stmt->execute();
-    $results = $stmt->rowCount();
-    if ($results == 1) {
-      while ($results = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        # code...
-
-      $_SESSION['id'] ="";
-      // $_SESSION['id'] == $results['0'];
-      // var_dump($results);
-      echo $_SESSION['id'];
-      $_SESSION['open'] = 1;
-    }
-
-      // default redirection
-      header('location:/?c=order&?t=index');
-    }
-    else{
-      $error = "Erreur de connexion";
-      echo $error;
-      // header('location:/?c=order&?t=index');
-
-    }
-
-    // return $results;
-  }
-  public function logout()
-  {
-    session_destroy();
-  }
-
-
-
-
+  private $_id;
+  private $_username;
+  private $_password;
 
   /**
   * GETTERS / SETTERS
   */
+  public function getId()
+  {
+    return $this->_id;
+  }
   public function getUsername()
   {
     return $this->_username;
@@ -88,3 +36,68 @@ class User extends Connect
     return $this;
   }
 }
+
+
+// class User
+// {
+//     private $id;
+//     private $username;
+//     private $password;
+//     private $email;
+//
+//     /**
+//      * @return integer
+//      */
+//     public function getId()
+//     {
+//         return $this->id;
+//     }
+//
+//     /**
+//      * @return string
+//      */
+//     public function getUsername()
+//     {
+//         return $this->username;
+//     }
+//
+//     /**
+//      * @return string
+//      */
+//     public function setUsername($username)
+//     {
+//         return $this->username = $username;
+//     }
+//
+//     /**
+//      * @return string
+//      */
+//     public function getPassword()
+//     {
+//         return $this->password;
+//     }
+//
+//     /**
+//      * @return string
+//      */
+//     public function setPassword($password)
+//     {
+//         return $this->password = $password;
+//     }
+//
+//     /**
+//      * @return string
+//      */
+//     public function getEmail()
+//     {
+//         return $this->email;
+//     }
+//
+//     /**
+//      * @return string
+//      */
+//     public function setEmail($email)
+//     {
+//         return $this->email = $email;
+//     }
+// }
