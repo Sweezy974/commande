@@ -65,7 +65,7 @@ class Order extends Authenticator
 
 
 
-
+  // save an order which has just been treated
   public function save()
   {
     $connexion =  $this->getConnexion();
@@ -115,7 +115,7 @@ class Order extends Authenticator
         (:codeClient,:raisonSociale,:adresseFacturation,:cpFacturation,:villeFacturation,:adresseLivraison,
           :cpLivraison,:villeLivraison,:tel1,:tel2,:mail1,:mail2,:nomResponsable,:prenomResponsable,:materiel,:telesurveillance,
           :videosurveillance,:commentaires,:mainOeuvre,:travauxHauteur,:cableMoulure,:trancheExterieur,:cablePlafond,:tubeIro,:locationOuVente,
-          :engagementLocation,:montantDevis,:acompte,:numeroDevis,'2017-06-08 19:52:17',:userId)";
+          :engagementLocation,:montantDevis,:acompte,:numeroDevis,NOW(),:userId)";
 
 
           $stmt = $connexion->prepare ($sql);
@@ -163,9 +163,8 @@ class Order extends Authenticator
 
 
 
-      /**
-      * GETTERS / SETTERS
-      */
+      //GET & SET
+
       public function getCodeClient()
       {
         return $this->_codeClient;

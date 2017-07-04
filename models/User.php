@@ -26,9 +26,8 @@ class User
     }
   }
 
-  /**
-  * GETTERS / SETTERS
-  */
+  //GET & SET
+   
   public function getId()
   {
     return $this->_id;
@@ -55,68 +54,3 @@ class User
     return $this;
   }
 }
-
-
-// class User
-// {
-//     private $id;
-//     private $username;
-//     private $password;
-//     private $email;
-//
-//     /**
-//      * @return integer
-//      */
-//     public function getId()
-//     {
-//         return $this->id;
-//     }
-//
-//     /**
-//      * @return string
-//      */
-//     public function getUsername()
-//     {
-//         return $this->username;
-//     }
-//
-//     /**
-//      * @return string
-//      */
-//     public function setUsername($username)
-//     {
-//         return $this->username = $username;
-//     }
-//
-//     /**
-//      * @return string
-//      */
-//     public function getPassword()
-//     {
-//         return $this->password;
-//     }
-//
-//     /**
-//      * @return string
-//      */
-//     public function setPassword($password)
-//     {
-//         return $this->password = $password;
-//     }
-//
-//     /**
-//      * @return string
-//      */
-//     public function getEmail()
-//     {
-//         return $this->email;
-//     }
-//
-//     /**
-//      * @return string
-//      */
-//     public function setEmail($email)
-//     {
-//         return $this->email = $email;
-//     }
-// }
