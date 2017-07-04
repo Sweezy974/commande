@@ -1,10 +1,10 @@
 <?php
 namespace Controllers;
-use App\Connect;
-use Models\Order;
-
 use \Twig_Loader_Filesystem;
 use \Twig_Environment;
+use App\Connect;
+use Models\Order;
+use Models\User;
 
 
 class OrderController extends Controller
@@ -14,7 +14,10 @@ class OrderController extends Controller
   public function index()
   {
     // check if this user is connected
-    $user = $this->checkIfUserIsLogged();
+    $user = new User();
+    $login = $user->checkIfUserIsLogged();
+    // check if this user is a commercial
+    $commercial = $user->checkIfUserIsACommercial($_SESSION['group_id']);
 
 
     $order = new Order();
@@ -36,7 +39,10 @@ class OrderController extends Controller
 
 public function new(){
   // check if this user is connected
-  $user = $this->checkIfUserIsLogged();
+  $user = new User();
+  $login = $user->checkIfUserIsLogged();
+  // check if this user is a commercial
+  $commercial = $user->checkIfUserIsACommercial($_SESSION['group_id']);
 
   $order = new Order();
   $DocumentNumber = $_GET['pk'];
@@ -146,6 +152,7 @@ public function save(){
 
 
 }
+
 
 
 }

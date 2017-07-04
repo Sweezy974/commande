@@ -7,6 +7,23 @@ class User
   private $_username;
   private $_password;
 
+
+  public function checkIfUserIsLogged()
+  {
+    if (empty($_SESSION['username']) && empty($_SESSION['id'])) {
+      header("Location: /");
+    }
+  }
+
+  public function checkIfUserIsACommercial($group_id)
+  {
+    if ($group_id!=1 && $group_id !=5  ) {
+      $_SESSION['errorLogin'] = "cette partie est réservé aux commerciaux";
+      header("Location: /");
+      exit;
+    }
+  }
+
   /**
   * GETTERS / SETTERS
   */

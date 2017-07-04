@@ -26,6 +26,7 @@ class Authenticator extends Connect
       $_SESSION['lastname'] =  $userInfo['nom'];
       $_SESSION['firstname'] =  $userInfo['prenom'];
       $_SESSION['email'] =  $userInfo['mail'];
+      $_SESSION['group_id'] =  $userInfo['groupe_id'];
       header("Location: ?c=order&t=index");
     }
     else {
