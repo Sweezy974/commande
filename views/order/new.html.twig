@@ -1,10 +1,3 @@
-<!-- <form class="form-horizontal" action="?c=order&t=new" method="post" enctype="multipart/form-data">
-<input type="text" placeholder="code cl"name="codeClient" class="form-control" >
-<input type="text" placeholder="nomr"name="nomResponsable" class="form-control" >
-<input type="text" placeholder="raisonSociale"name="raisonSociale" class="form-control" >
-<input type="submit" name="valid" id="valid" value="Enregistrer" class="btn btn-success">
-</form>
--->
 
 {% include "base/layout.html.twig"%}
 
@@ -47,7 +40,7 @@
 
       <div class="row col m12 s12 center" style="margin-bottom:60px;">
         <div class=" col s12 ">
-          <h6><?php echo $numero_client; ?></h6>
+          <h6>{{orderInformation.CustomerName}}</h6>
         </div>
       </div>
 
