@@ -1,6 +1,6 @@
 {
-    "name": "fredB/ atelier",
-    "description": "site atelier",
+    "name": "fredB/ commande",
+    "description": "module commande",
     "type": "project",
 
     "autoload": {
