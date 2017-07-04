@@ -18,9 +18,11 @@ class User
   public function checkIfUserIsACommercial($group_id)
   {
     if ($group_id!=1 && $group_id !=5  ) {
-      $_SESSION['errorLogin'] = "cette partie est réservé aux commerciaux";
+      $_SESSION['errorLogin'] = "Vous n'avez pas accès à cette partie.";
       header("Location: /");
       exit;
+      session_destroy();
+
     }
   }
 
