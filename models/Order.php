@@ -59,7 +59,7 @@ class Order extends Authenticator
     $sql = "SELECT * FROM `sqlserver`.`sale_document` WHERE DocumentType='8' AND DocumentNumber =:DocumentNumber";
     $stmt = $connexion->prepare($sql);
     $stmt->execute(array(':DocumentNumber' => $DocumentNumber));
-    $results = $stmt->fetchAll();
+    $results = $stmt->fetch();
     return $results;
   }
 
@@ -119,7 +119,6 @@ class Order extends Authenticator
 
 
           $stmt = $connexion->prepare ($sql);
-
           // attribute the values which cames from the form
           $stmt->bindParam(':codeClient',$codeClient);
           $stmt->bindParam(':raisonSociale',$raisonSociale);
