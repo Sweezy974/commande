@@ -37,6 +37,7 @@ class Order extends Authenticator
   protected $_acompte;
   protected $_numeroDevis;
   protected $_documentNumber;
+  protected $_userId;
 
 
   // display all order non-treated
@@ -100,6 +101,7 @@ class Order extends Authenticator
     $montantDevis =$this->getMontantDevis();
     $acompte = $this->getAcompte();
     $numeroDevis = $this->getNumeroDevis();
+    $userId = $this->getUserId();
 
 
 
@@ -495,6 +497,17 @@ class Order extends Authenticator
       public function setDocumentNumber($DocumentNumber)
       {
         $this->_documentNumber = $DocumentNumber;
+        return $this;
+      }
+
+      public function getUserId()
+      {
+        return $this->_userId;
+      }
+
+      public function setUserId($userId)
+      {
+        $this->_userId = $userId;
         return $this;
       }
 

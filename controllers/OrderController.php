@@ -145,8 +145,8 @@ public function save(){
   ->setEngagementLocation($_POST['engagementLocation'])
   ->setMontantDevis($_POST['montantDevis'])
   ->setAcompte($_POST['acompte'])
-  ->setNumeroDevis($_POST['numeroDevis']);
-
+  ->setNumeroDevis($_POST['numeroDevis'])
+  ->setUserId($_SESSION['id']);
   $order->save();
 
   header( "Location: /?c=order&t=Index" );
