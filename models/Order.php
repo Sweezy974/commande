@@ -115,7 +115,7 @@ class Order extends Authenticator
         (:codeClient,:raisonSociale,:adresseFacturation,:cpFacturation,:villeFacturation,:adresseLivraison,
           :cpLivraison,:villeLivraison,:tel1,:tel2,:mail1,:mail2,:nomResponsable,:prenomResponsable,:materiel,:telesurveillance,
           :videosurveillance,:commentaires,:mainOeuvre,:travauxHauteur,:cableMoulure,:trancheExterieur,:cablePlafond,:tubeIro,:locationOuVente,
-          :engagementLocation,:montantDevis,:acompte,:numeroDevis,'2017-06-08 19:52:17',81)";
+          :engagementLocation,:montantDevis,:acompte,:numeroDevis,'2017-06-08 19:52:17',:userId)";
 
 
           $stmt = $connexion->prepare ($sql);
@@ -150,6 +150,7 @@ class Order extends Authenticator
           $stmt->bindParam(':montantDevis',$montantDevis);
           $stmt->bindParam(':acompte',$acompte);
           $stmt->bindParam(':numeroDevis',$numeroDevis);
+          $stmt->bindParam(':userId',$_SESSION['id']);
           $stmt->execute();
 
 

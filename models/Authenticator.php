@@ -30,6 +30,8 @@ class Authenticator extends Connect
     }
     else {
       header("Location: /?c=index");
+      $_SESSION['errorLogin'] =  "Erreur de connexion.Vérifier vos identifiants";
+
     }
   }
   // logout the user

@@ -15,16 +15,14 @@ class IndexController extends Controller
   public function index()
   {
 
-    if (empty($_SESSION['id'])) {
-      $error = "Erreur de connexion.Vérifier vos identifiants";
+    if (isset($_SESSION['errorLogin'])) {
       echo $this->twig->render('login/index.html.twig',
       [
-        "error" => $error
+        "error" => $_SESSION['errorLogin']
       ]);
     }
     else {
       echo $this->twig->render('login/index.html.twig');
-      # code...
     }
   }
 

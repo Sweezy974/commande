@@ -7,15 +7,14 @@ use \Twig_Loader_Filesystem;
 use \Twig_Environment;
 
 
-class OrderController extends IndexController
+class OrderController extends Controller
 {
   protected $twig;
 
   public function index()
   {
     // check if this user is connected
-    $login = new Controller;
-    $user = $login->checkIfUserIsLogged();
+    $user = $this->checkIfUserIsLogged();
 
 
     $order = new Order();
@@ -37,8 +36,7 @@ class OrderController extends IndexController
 
 public function new(){
   // check if this user is connected
-  $login = new Controller;
-  $user = $login->checkIfUserIsLogged();
+  $user = $this->checkIfUserIsLogged();
 
   $order = new Order();
   $DocumentNumber = $_GET['pk'];
@@ -59,8 +57,9 @@ public function new(){
 
 public function save(){
   // check if this user is connected
-  $login = new Controller;
-  $user = $login->checkIfUserIsLogged();
+  if (empty($_SESSION['id'])) {
+    header("Location: /?c=index");
+  }
 
 
   // check if the form is correctly fill
