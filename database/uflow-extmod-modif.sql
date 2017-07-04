@@ -2,26 +2,26 @@ CREATE DATABASE IF NOT EXISTS sqlserver;
 USE `sqlserver`;
 
 CREATE TABLE IF NOT EXISTS `sale_document` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `CustomerName` varchar(255) NOT NULL,
-  `CustomerId` varchar(11) NOT NULL,
-  `DocumentState` int(1) NOT NULL,
-  `DocumentType` int(1) NOT NULL,
-  `DocumentNumber` int(6) NOT NULL,
-  `sysCreatedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `DeliveryAddress_Address` text NOT NULL,
-  `DeliveryAddress_ZipCode` int(6) NOT NULL,
-  `DeliveryAddress_City` varchar(255) NOT NULL,
-  `InvoicingAddress_Address` text NOT NULL,
-  `InvoicingAddress_ZipCode` int(6) NOT NULL,
-  `InvoicingAddress_City` varchar(255) NOT NULL,
-  `InvoicingContact_Phone` varchar(255) NOT NULL,
-  `InvoicingContact_CellPhone` varchar(255) NOT NULL,
-  `InvoicingContact_Email` varchar(255) NOT NULL,
-  `InvoicingContact_Name` varchar(255) NOT NULL,
-  `InvoicingContact_FirstName` varchar(255) NOT NULL,
-  `AmountVatExcluded` varchar(255) NOT NULL,
-  `DepositAmount` varchar(255) NOT NULL
+  `id` INT NOT NULL PRIMARY KEY,
+  `CustomerName` VARCHAR(255) NOT NULL,
+  `CustomerId` VARCHAR(11) NOT NULL,
+  `DocumentState` INT(1) NOT NULL,
+  `DocumentType` INT(1) NOT NULL,
+  `DocumentNumber` INT(6) NOT NULL,
+  `sysCreatedDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `DeliveryAddress_Address` TEXT NOT NULL,
+  `DeliveryAddress_ZipCode` INT(6) NOT NULL,
+  `DeliveryAddress_City` VARCHAR(255) NOT NULL,
+  `InvoicingAddress_Address` TEXT NOT NULL,
+  `InvoicingAddress_ZipCode` INT(6) NOT NULL,
+  `InvoicingAddress_City` VARCHAR(255) NOT NULL,
+  `InvoicingContact_Phone` VARCHAR(255) NOT NULL,
+  `InvoicingContact_CellPhone` VARCHAR(255) NOT NULL,
+  `InvoicingContact_Email` VARCHAR(255) NOT NULL,
+  `InvoicingContact_Name` VARCHAR(255) NOT NULL,
+  `InvoicingContact_FirstName` VARCHAR(255) NOT NULL,
+  `AmountVatExcluded` VARCHAR(255) NOT NULL,
+  `DepositAmount` VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -56,11 +56,10 @@ USE `uflow` ;
 -- Table `uflow`.`groupe`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `uflow`.`groupe` (
-  `id` INT NOT NULL,
+  `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   `lib` VARCHAR(255) NULL,
   `description` TEXT NULL,
-  `etat` TINYINT(1) NULL  COMMENT '0 : non actif : 1 : actif',
-  PRIMARY KEY (`id`))
+  `etat` TINYINT(1) NULL  COMMENT '0 : non actif : 1 : actif')
 ENGINE = InnoDB;
 
 
@@ -68,8 +67,8 @@ ENGINE = InnoDB;
 -- Table `uflow`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `uflow`.`users` (
-  `id` INT AUTO_INCREMENT NOT NULL,
-  `login` VARCHAR(80) NOT NULL,
+  `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  `login` VARCHAR(80) UNIQUE NOT NULL,
   `nom` VARCHAR(100) NOT NULL,
   `prenom` VARCHAR(100) NOT NULL,
   `pwd` VARCHAR(255) NOT NULL,
@@ -81,8 +80,6 @@ CREATE TABLE IF NOT EXISTS `uflow`.`users` (
   `signature` TEXT NULL,
   `etat` TINYINT(1) NULL COMMENT '1: actif ; 0 : non actif',
   `groupe_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `groupe_id`, `pwd`),
-  INDEX `fk_users_groupe1_idx` (`groupe_id` ASC),
   CONSTRAINT `fk_users_groupe1`
     FOREIGN KEY (`groupe_id`)
     REFERENCES `uflow`.`groupe` (`id`)
@@ -95,7 +92,7 @@ ENGINE = InnoDB;
 -- Table `uflow`.`modules_commandes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `uflow`.`modules_commandes` (
-  `id` INT AUTO_INCREMENT NOT NULL,
+  `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   `date_creation` TIMESTAMP NOT NULL,
   `numero_devis` VARCHAR(10) BINARY NOT NULL,
   `numero_comptable` VARCHAR(11) NOT NULL,
@@ -127,8 +124,6 @@ CREATE TABLE IF NOT EXISTS `uflow`.`modules_commandes` (
   `montant_devis` VARCHAR(255) NOT NULL,
   `acompte` VARCHAR(255) NOT NULL,
   `users_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `users_id`),
-  INDEX `fk_modules_commandes_users_idx` (`users_id` ASC),
   CONSTRAINT `fk_modules_commandes_users`
     FOREIGN KEY (`users_id`)
     REFERENCES `uflow`.`users` (`id`)
