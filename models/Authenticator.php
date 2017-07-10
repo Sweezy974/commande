@@ -30,8 +30,8 @@ class Authenticator extends Connect
       header("Location: ?c=order&t=index");
     }
     else {
-      header("Location: /?c=index");
       $_SESSION['errorLogin'] =  "Erreur de connexion.Vérifier vos identifiants";
+      header("Location: /?c=index");
 
     }
   }

@@ -20,14 +20,11 @@ class User
     if ($group_id!=1 && $group_id !=5  ) {
       $_SESSION['errorLogin'] = "Vous n'avez pas accès à cette partie.";
       header("Location: /");
-      exit;
-      session_destroy();
-
     }
   }
 
   //GET & SET
-   
+
   public function getId()
   {
     return $this->_id;
